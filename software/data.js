@@ -76,7 +76,7 @@ const softwareData = [
         id: "snapcraft",
         title: "Snap Store",
         url: "https://snapcraft.io/store",
-        icon: "/assets/img/software/snapcraft.svg",
+        icon: "/assets/img/software/snapstore.png",
         category: "linux",
         badges: [
             { text: "Official", type: "official" }
@@ -138,7 +138,7 @@ const softwareData = [
         id: "privacybadger",
         title: "Privacy Badger",
         url: "https://privacybadger.org/",
-        icon: "/assets/img/software/privacybadger.png",
+        icon: "/assets/img/software/privacybadger_new.png",
         category: "privacy",
         badges: [
             { text: "EFF", type: "official" },

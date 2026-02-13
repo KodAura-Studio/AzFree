@@ -529,8 +529,15 @@
                 });
             }
 
-            // Initial Render
+            // Initial Render - Force display all items
             renderItems(softwareData);
+
+            // Reset filter to "all" on page load to ensure visibility
+            const allFilterBtn = document.querySelector('[data-filter="all"]');
+            if (allFilterBtn) {
+                allFilterBtn.classList.add('bg-primary', 'text-background-dark');
+                allFilterBtn.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+            }
 
             // Filter Logic
             filterBtns.forEach(btn => {
