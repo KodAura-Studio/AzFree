@@ -4,7 +4,7 @@ const softwareData = [
         id: "mas",
         title: "Massgrave (MAS)",
         url: "https://massgrave.dev/",
-        icon: "https://avatars.githubusercontent.com/u/108619633?s=200&v=4",
+        icon: "/assets/img/software/mas.png",
         category: "windows",
         badges: [
             { text: "Open Source", type: "opensource" },
@@ -16,7 +16,7 @@ const softwareData = [
         id: "portableapps",
         title: "PortableApps",
         url: "https://portableapps.com/",
-        icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/PortableApps.com_logo.svg/1024px-PortableApps.com_logo.svg.png",
+        icon: "/assets/img/software/portableapps.ico",
         category: "windows",
         badges: [
             { text: "Official", type: "official" }
@@ -27,7 +27,7 @@ const softwareData = [
         id: "ninite",
         title: "Ninite",
         url: "https://ninite.com/",
-        icon: "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://ninite.com&size=128",
+        icon: "/assets/img/software/ninite.png",
         category: "windows",
         badges: [
             { text: "Official", type: "official" }
@@ -40,7 +40,7 @@ const softwareData = [
         id: "homebrew",
         title: "Homebrew",
         url: "https://brew.sh/",
-        icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Homebrew_logo.svg/1024px-Homebrew_logo.svg.png",
+        icon: "/assets/img/software/homebrew.svg",
         category: "mac",
         badges: [
             { text: "Official", type: "official" },
@@ -52,7 +52,7 @@ const softwareData = [
         id: "objectivesee",
         title: "Objective-See",
         url: "https://objective-see.org/tools.html",
-        icon: "https://avatars.githubusercontent.com/u/14466224?s=200&v=4",
+        icon: "/assets/img/software/objectivesee.png",
         category: "mac",
         badges: [
             { text: "Security", type: "opensource" }
@@ -65,7 +65,7 @@ const softwareData = [
         id: "flathub",
         title: "Flathub",
         url: "https://flathub.org/",
-        icon: "https://dl.flathub.org/assets/logo-black.svg",
+        icon: "/assets/img/software/flathub.svg",
         category: "linux",
         badges: [
             { text: "Official", type: "official" }
@@ -76,7 +76,7 @@ const softwareData = [
         id: "snapcraft",
         title: "Snap Store",
         url: "https://snapcraft.io/store",
-        icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Snapcraft-logo-bird.svg/1024px-Snapcraft-logo-bird.svg.png",
+        icon: "/assets/img/software/snapcraft.svg",
         category: "linux",
         badges: [
             { text: "Official", type: "official" }
@@ -87,7 +87,7 @@ const softwareData = [
         id: "aur",
         title: "AUR (Arch User Repository)",
         url: "https://aur.archlinux.org/",
-        icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Archlinux-icon-crystal-64.svg/1024px-Archlinux-icon-crystal-64.svg.png",
+        icon: "/assets/img/software/aur.svg",
         category: "linux",
         badges: [
             { text: "Community", type: "community" },
@@ -101,7 +101,7 @@ const softwareData = [
         id: "fdroid",
         title: "F-Droid",
         url: "https://f-droid.org/",
-        icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/F-Droid_logo.svg/1024px-F-Droid_logo.svg.png",
+        icon: "/assets/img/software/fdroid.svg",
         category: "android",
         badges: [
             { text: "Open Source", type: "opensource" },
@@ -113,7 +113,7 @@ const softwareData = [
         id: "mobilism",
         title: "Mobilism",
         url: "https://mobilism.org/",
-        icon: "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://mobilism.org&size=128",
+        icon: "/assets/img/software/mobilism.png",
         category: "android",
         badges: [
             { text: "Community", type: "community" }
@@ -126,7 +126,7 @@ const softwareData = [
         id: "ublock",
         title: "uBlock Origin",
         url: "https://github.com/gorhill/uBlock",
-        icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/UBlock_Origin.svg/1024px-UBlock_Origin.svg.png",
+        icon: "/assets/img/software/ublock.svg",
         category: "privacy",
         badges: [
             { text: "Essential", type: "official" },
@@ -138,7 +138,7 @@ const softwareData = [
         id: "privacybadger",
         title: "Privacy Badger",
         url: "https://privacybadger.org/",
-        icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/PrivacyBadgerLogo.svg/1024px-PrivacyBadgerLogo.svg.png",
+        icon: "/assets/img/software/privacybadger.png",
         category: "privacy",
         badges: [
             { text: "EFF", type: "official" },
@@ -150,7 +150,7 @@ const softwareData = [
         id: "bitwarden",
         title: "Bitwarden",
         url: "https://bitwarden.com/",
-        icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Bitwarden_logo_vertical.svg/1024px-Bitwarden_logo_vertical.svg.png",
+        icon: "/assets/img/software/bitwarden.svg",
         category: "privacy",
         badges: [
             { text: "Password Manager", type: "official" },
@@ -164,7 +164,7 @@ const softwareData = [
         id: "rutracker",
         title: "Rutracker",
         url: "https://rutracker.org/",
-        icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Rutracker.org_logo.svg/1024px-Rutracker.org_logo.svg.png",
+        icon: "/assets/img/software/rutracker.png",
         category: "linux", // Also fits universal, but listed in linux/windows usually
         badges: [
             { text: "Tracker", type: "community" },
