@@ -41,7 +41,7 @@
             },
         }
     </script>
-    <style>
+    <style type="text/tailwindcss">
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 5rem;
@@ -267,7 +267,7 @@
                         <span class="material-icons-round text-slate-500">search</span>
                     </span>
                     <input type="text" id="local-search" placeholder="Oyun mənbələrini axtar..."
-                        class="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-xl py-3 pl-10 pr-4 text-slate-900 dark:text-white placeholder-slate-500 focus:ring-2 focus:ring-primary/50 transition-shadow shadow-sm">
+                        class="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-xl py-3 pl-10 pr-4 text-slate-900 dark:text-white placeholder-slate-500 focus:ring-2 focus:ring-primary/50 transition-shadow shadow-sm" />
                 </div>
 
                 <!-- Filter Chips -->
@@ -327,8 +327,8 @@
                     data-category="repack">
                     <div
                         class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary/10 transition-colors">
-                        <img src="https://www.google.com/s2/favicons?domain=fitgirl-repacks.site&sz=64" alt="Icon"
-                            class="w-6 h-6 opacity-80 group-hover:opacity-100">
+                        <img src="https://www.google.com/s2/favicons?domain=fitgirl-repacks.site&amp;sz=64" alt="Icon"
+                            class="w-6 h-6 opacity-80 group-hover:opacity-100" />
                     </div>
                     <div class="flex-grow">
                         <div class="flex items-center gap-2 mb-1">
@@ -352,8 +352,8 @@
                     data-category="repack">
                     <div
                         class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary/10 transition-colors">
-                        <img src="https://www.google.com/s2/favicons?domain=dodi-repacks.site&sz=64" alt="Icon"
-                            class="w-6 h-6 opacity-80 group-hover:opacity-100">
+                        <img src="https://www.google.com/s2/favicons?domain=dodi-repacks.site&amp;sz=64" alt="Icon"
+                            class="w-6 h-6 opacity-80 group-hover:opacity-100" />
                     </div>
                     <div class="flex-grow">
                         <div class="flex items-center gap-2 mb-1">
@@ -377,8 +377,8 @@
                     data-category="direct">
                     <div
                         class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary/10 transition-colors">
-                        <img src="https://www.google.com/s2/favicons?domain=gog-games.to&sz=64" alt="Icon"
-                            class="w-6 h-6 opacity-80 group-hover:opacity-100">
+                        <img src="https://www.google.com/s2/favicons?domain=gog-games.to&amp;sz=64" alt="Icon"
+                            class="w-6 h-6 opacity-80 group-hover:opacity-100" />
                     </div>
                     <div class="flex-grow">
                         <div class="flex items-center gap-2 mb-1">
@@ -400,11 +400,34 @@
                 </div>
 
                 <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all"
+                    data-category="direct">
+                    <div
+                        class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary/10 transition-colors">
+                        <img src="https://www.google.com/s2/favicons?domain=steamrip.com&amp;sz=64" alt="Icon"
+                            class="w-6 h-6 opacity-80 group-hover:opacity-100" />
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center gap-2 mb-1">
+                            <a href="https://steamrip.com/" target="_blank"
+                                class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">SteamRIP</a>
+                            <span
+                                class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-500 uppercase">Direct</span>
+                        </div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Pre-installed oyunlar. Quraşdırma tələb
+                            etmir, sadəcə yüklə və oyna. Təhlükəsizdir.</p>
+                    </div>
+                    <div class="hidden sm:block">
+                        <span
+                            class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
+                    </div>
+                </div>
+
+                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all"
                     data-category="multiplayer">
                     <div
                         class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary/10 transition-colors">
-                        <img src="https://www.google.com/s2/favicons?domain=online-fix.me&sz=64" alt="Icon"
-                            class="w-6 h-6 opacity-80 group-hover:opacity-100">
+                        <img src="https://www.google.com/s2/favicons?domain=online-fix.me&amp;sz=64" alt="Icon"
+                            class="w-6 h-6 opacity-80 group-hover:opacity-100" />
                     </div>
                     <div class="flex-grow">
                         <div class="flex items-center gap-2 mb-1">
@@ -426,8 +449,8 @@
                     data-category="emulator">
                     <div
                         class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary/10 transition-colors">
-                        <img src="https://www.google.com/s2/favicons?domain=rpcs3.net&sz=64" alt="Icon"
-                            class="w-6 h-6 opacity-80 group-hover:opacity-100">
+                        <img src="https://www.google.com/s2/favicons?domain=rpcs3.net&amp;sz=64" alt="Icon"
+                            class="w-6 h-6 opacity-80 group-hover:opacity-100" />
                     </div>
                     <div class="flex-grow">
                         <div class="flex items-center gap-2 mb-1">

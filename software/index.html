@@ -72,22 +72,6 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #1fcdef;
         }
-
-        .link-item {
-            @apply border-b border-white/5 py-3 hover:bg-white/5 transition-colors px-2 rounded-lg;
-        }
-
-        .link-icon {
-            @apply text-yellow-500 mr-2;
-        }
-
-        .link-text {
-            @apply text-primary font-medium hover:underline;
-        }
-
-        .link-note {
-            @apply text-slate-500 text-sm ml-2;
-        }
     </style>
 </head>
 
@@ -286,6 +270,10 @@
                         class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">
                         Linux
                     </button>
+                    <button data-filter="privacy"
+                        class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 transition-all">
+                        Privacy Tools
+                    </button>
                 </div>
             </div>
 
@@ -316,103 +304,7 @@
 
             <!-- Links List Section -->
             <div class="space-y-3" id="links-list">
-
-                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all"
-                    data-category="windows">
-                    <div
-                        class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary/10 transition-colors">
-                        <img src="https://www.google.com/s2/favicons?domain=filecr.com&sz=64" alt="Icon"
-                            class="w-6 h-6 opacity-80 group-hover:opacity-100">
-                    </div>
-                    <div class="flex-grow">
-                        <div class="flex items-center gap-2 mb-1">
-                            <a href="https://filecr.com/" target="_blank"
-                                class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">FileCR</a>
-                            <span
-                                class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-500 uppercase">Multi-Platform</span>
-                        </div>
-                        <p class="text-sm text-slate-500 dark:text-slate-400">Windows, Mac və Android proqramları üçün
-                            ən
-                            böyük baza. Yüksək sürətli yükləmə.</p>
-                    </div>
-                    <div class="hidden sm:block">
-                        <span
-                            class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
-                    </div>
-                </div>
-
-                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all"
-                    data-category="windows">
-                    <div
-                        class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary/10 transition-colors">
-                        <img src="https://www.google.com/s2/favicons?domain=getintopc.com&sz=64" alt="Icon"
-                            class="w-6 h-6 opacity-80 group-hover:opacity-100">
-                    </div>
-                    <div class="flex-grow">
-                        <div class="flex items-center gap-2 mb-1">
-                            <a href="https://getintopc.com/" target="_blank"
-                                class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">GetIntoPC</a>
-                            <span
-                                class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-500 uppercase">Windows</span>
-                        </div>
-                        <p class="text-sm text-slate-500 dark:text-slate-400">Çox geniş proqram arxivi. Xüsusi
-                            mühəndislik
-                            və dizayn proqramları üçün idealdır.</p>
-                    </div>
-                    <div class="hidden sm:block">
-                        <span
-                            class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
-                    </div>
-                </div>
-
-                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all"
-                    data-category="activator">
-                    <div
-                        class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary/10 transition-colors">
-                        <img src="https://www.google.com/s2/favicons?domain=massgrave.dev&sz=64" alt="Icon"
-                            class="w-6 h-6 opacity-80 group-hover:opacity-100">
-                    </div>
-                    <div class="flex-grow">
-                        <div class="flex items-center gap-2 mb-1">
-                            <a href="https://massgrave.dev/" target="_blank"
-                                class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Massgrave
-                                (MAS)</a>
-                            <span
-                                class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-500 uppercase">Activator</span>
-                        </div>
-                        <p class="text-sm text-slate-500 dark:text-slate-400">Ən təhlükəsiz və açıq mənbəli
-                            Windows/Office
-                            aktivatoru.</p>
-                    </div>
-                    <div class="hidden sm:block">
-                        <span
-                            class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
-                    </div>
-                </div>
-
-                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all"
-                    data-category="android">
-                    <div
-                        class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary/10 transition-colors">
-                        <img src="https://www.google.com/s2/favicons?domain=mobilism.org&sz=64" alt="Icon"
-                            class="w-6 h-6 opacity-80 group-hover:opacity-100">
-                    </div>
-                    <div class="flex-grow">
-                        <div class="flex items-center gap-2 mb-1">
-                            <a href="https://mobilism.org/" target="_blank"
-                                class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Mobilism</a>
-                            <span
-                                class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-500 uppercase">Android</span>
-                        </div>
-                        <p class="text-sm text-slate-500 dark:text-slate-400">Android tətbiqləri və kitablar üçün forum.
-                        </p>
-                    </div>
-                    <div class="hidden sm:block">
-                        <span
-                            class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
-                    </div>
-                </div>
-
+                <!-- Content will be generated by JavaScript -->
             </div>
 
         </main>
@@ -597,45 +489,93 @@
             });
         }
     </script>
+    <script src="data.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const filterBtns = document.querySelectorAll('.filter-btn');
-            const items = document.querySelectorAll('.link-item');
             const searchInput = document.getElementById('local-search');
+            const linksListContainer = document.getElementById('links-list');
 
+            // Render items based on data
+            function renderItems(items) {
+                linksListContainer.innerHTML = '';
+                if (items.length === 0) {
+                    linksListContainer.innerHTML = '<p class="text-center text-slate-500">Heç nə tapılmadı...</p>';
+                    return;
+                }
+
+                items.forEach(item => {
+                    const badgesHtml = item.badges ? item.badges.map(b => `<span class="badge badge-${b.type}">${b.text}</span>`).join('') : '';
+
+                    const html = `
+        <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all"
+            data-category="${item.category}">
+            <div class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary/10 transition-colors">
+                <img src="${item.icon}" alt="${item.title}" class="w-6 h-6 opacity-80 group-hover:opacity-100">
+            </div>
+            <div class="flex-grow">
+                <div class="flex items-center gap-2 mb-1 flex-wrap">
+                    <a href="${item.url}" target="_blank" class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</a>
+                    ${badgesHtml}
+                </div>
+                <p class="text-sm text-slate-500 dark:text-slate-400">${item.description}</p>
+            </div>
+            <div class="hidden sm:block">
+                <span class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
+            </div>
+        </div>
+                    `;
+                    linksListContainer.insertAdjacentHTML('beforeend', html);
+                });
+            }
+
+            // Initial Render
+            renderItems(softwareData);
+
+            // Filter Logic
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const category = btn.getAttribute('data-filter');
 
-                    // Update visual state
+                    // Visual State
                     filterBtns.forEach(b => {
                         b.classList.remove('bg-primary', 'text-background-dark');
-                        b.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
-                    });
-                    btn.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
-                    btn.classList.add('bg-primary', 'text-background-dark');
-
-                    items.forEach(item => {
-                        if (category === 'all' || item.getAttribute('data-category') === category) {
-                            item.style.display = 'flex';
+                        if (b.getAttribute('data-filter') === 'privacy') {
+                            b.classList.add('bg-purple-500/10', 'text-purple-600', 'dark:text-purple-400');
+                            b.classList.remove('bg-purple-500', 'text-white'); // clear active privacy style if needed
                         } else {
-                            item.style.display = 'none';
+                            b.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
                         }
                     });
+
+                    // Active State Styling
+                    btn.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+                    if (category === 'privacy') {
+                        btn.classList.remove('bg-purple-500/10', 'text-purple-600', 'dark:text-purple-400');
+                        btn.classList.add('bg-purple-500', 'text-white');
+                    } else {
+                        btn.classList.add('bg-primary', 'text-background-dark');
+                    }
+
+                    // Filtering
+                    if (category === 'all') {
+                        renderItems(softwareData);
+                    } else {
+                        const filtered = softwareData.filter(item => item.category === category);
+                        renderItems(filtered);
+                    }
                 });
             });
 
+            // Search Logic
             if (searchInput) {
                 searchInput.addEventListener('input', (e) => {
                     const query = e.target.value.toLowerCase();
-                    items.forEach(item => {
-                        const text = item.innerText.toLowerCase();
-                        if (text.includes(query)) {
-                            item.style.display = 'flex';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
+                    const filtered = softwareData.filter(item =>
+                        item.title.toLowerCase().includes(query) ||
+                        item.description.toLowerCase().includes(query)
+                    );
+                    renderItems(filtered);
                 });
             }
         });
