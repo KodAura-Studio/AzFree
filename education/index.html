@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html class="dark" lang="az">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Təhsil - AzFree</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1fcdef" />
+    <link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <!-- Tailwind Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1fcdef",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#020617",
+                        "surface-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'neon': '0 0 5px theme("colors.primary"), 0 0 20px theme("colors.primary")',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 5rem;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .text-glow {
+            text-shadow: 0 0 10px rgba(31, 205, 239, 0.5);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1fcdef;
+        }
+
+        .link-item {
+            @apply border-b border-white/5 py-3 hover:bg-white/5 transition-colors px-2 rounded-lg;
+        }
+
+        .link-icon {
+            @apply text-yellow-500 mr-2;
+        }
+
+        .link-text {
+            @apply text-primary font-medium hover:underline;
+        }
+
+        .link-note {
+            @apply text-slate-500 text-sm ml-2;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-display selection:bg-primary selection:text-black min-h-screen flex flex-col">
+    <!-- Header -->
+    <header
+        class="fixed top-0 w-full z-50 backdrop-blur-md bg-white/70 dark:bg-background-dark/80 border-b border-gray-200 dark:border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a class="flex items-center gap-2 group" href="/">
+                        <span class="material-icons-round text-primary text-3xl">terminal</span>
+                        <span
+                            class="text-2xl font-bold tracking-tighter text-slate-900 dark:text-white group-hover:text-primary transition-colors duration-300 text-glow">
+                            Az<span class="text-primary">Free</span>
+                        </span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+                        href="/">Ana Səhifə</a>
+                    <a class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+                        href="/blog">Blog</a>
+                    <a class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+                        href="/faq">FAQ</a>
+                    <button id="theme-toggle"
+                        class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+                        <span id="theme-icon"
+                            class="material-icons-round text-slate-700 dark:text-slate-300">light_mode</span>
+                    </button>
+                    <button onclick="openGlobalSearch()"
+                        class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+                        <span class="material-icons-round text-slate-700 dark:text-slate-300">search</span>
+                    </button>
+                </nav>
+                <!-- Mobile Menu Button (Visible on mobile) -->
+                <div class="md:hidden flex items-center gap-2">
+                    <button id="theme-toggle-mobile"
+                        class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+                        <span id="theme-icon-mobile" class="material-icons-round text-slate-300">light_mode</span>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
+                        <span class="material-icons-round text-2xl">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto pt-24 pb-12 px-4 sm:px-6 lg:px-8 w-full flex flex-col lg:flex-row gap-10">
+        <!-- Sidebar -->
+        <aside class="w-full lg:w-64 flex-shrink-0 hidden lg:block">
+            <nav class="sticky top-32 space-y-8">
+                <!-- General Section -->
+                <div>
+                    <h3 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4 px-2">
+                        Ümumi</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="/guide"
+                                class="flex items-center gap-3 px-2 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                <span
+                                    class="material-icons-round text-lg group-hover:text-primary transition-colors">school</span>
+                                <span
+                                    class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Başlanğıc
+                                    Rəhbəri</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/contribute"
+                                class="flex items-center gap-3 px-2 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                <span
+                                    class="material-icons-round text-lg group-hover:text-primary transition-colors">volunteer_activism</span>
+                                <span
+                                    class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Töhfə
+                                    Ver</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Wiki Section -->
+                <div>
+                    <h3 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4 px-2">Wiki
+                    </h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="/gaming"
+                                class="flex items-center gap-3 px-2 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                <span
+                                    class="material-icons-round text-lg group-hover:text-primary transition-colors">sports_esports</span>
+                                <span
+                                    class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Oyunlar</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/movies"
+                                class="flex items-center gap-3 px-2 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                <span
+                                    class="material-icons-round text-lg group-hover:text-primary transition-colors">movie</span>
+                                <span
+                                    class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Filmlər</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/software"
+                                class="flex items-center gap-3 px-2 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                <span
+                                    class="material-icons-round text-lg group-hover:text-primary transition-colors">desktop_windows</span>
+                                <span
+                                    class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Proqramlar</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/education"
+                                class="flex items-center gap-3 px-2 py-2 bg-primary/10 text-primary rounded-lg transition-colors">
+                                <span class="material-icons-round text-lg">menu_book</span>
+                                <span class="text-sm font-bold">Təhsil</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/privacy"
+                                class="flex items-center gap-3 px-2 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                <span
+                                    class="material-icons-round text-lg group-hover:text-primary transition-colors">security</span>
+                                <span
+                                    class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Məxfilik</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-grow w-full">
+
+            <!-- Mobile Wiki Toggle -->
+            <div class="lg:hidden mb-6">
+                <button id="wiki-menu-btn"
+                    class="w-full flex items-center justify-between px-4 py-3 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 rounded-xl text-slate-700 dark:text-slate-200 font-medium hover:border-primary/50 transition-colors">
+                    <span class="flex items-center gap-2">
+                        <span class="material-icons-round text-primary">menu_open</span>
+                        Kateqoriyalar
+                    </span>
+                    <span class="material-icons-round">expand_more</span>
+                </button>
+            </div>
+
+            <div class="mb-8">
+                <div class="flex items-center gap-3 mb-2">
+                    <h1
+                        class="text-3xl font-bold text-slate-900 dark:text-white underline decoration-primary/50 underline-offset-8 decoration-4">
+                        Təhsil</h1>
+                </div>
+                <p class="text-slate-500 dark:text-slate-400 mt-4">
+                    Onlayn kurslar, kitablar və öyrənmə materialları.
+                </p>
+            </div>
+
+            <!-- Search & Filter Section -->
+            <div class="mb-8 space-y-4">
+                <!-- Search Bar -->
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <span class="material-icons-round text-slate-500">search</span>
+                    </span>
+                    <input type="text" id="local-search" placeholder="Resurs axtar..."
+                        class="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-xl py-3 pl-10 pr-4 text-slate-900 dark:text-white placeholder-slate-500 focus:ring-2 focus:ring-primary/50 transition-shadow shadow-sm">
+                </div>
+
+                <!-- Filter Chips -->
+                <div class="flex flex-wrap gap-2" id="filter-container">
+                    <button data-filter="all"
+                        class="filter-btn active px-4 py-1.5 rounded-full text-sm font-medium bg-primary text-background-dark transition-all hover:opacity-90">
+                        Hamısı
+                    </button>
+                    <button data-filter="books"
+                        class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">
+                        Kitablar
+                    </button>
+                    <button data-filter="course"
+                        class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">
+                        Kurslar
+                    </button>
+                    <button data-filter="coding"
+                        class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">
+                        Proqramlaşdırma
+                    </button>
+                </div>
+            </div>
+
+            <!-- Featured Section -->
+            <div
+                class="mb-10 p-1 rounded-2xl bg-gradient-to-r from-primary via-purple-500 to-primary bg-[length:200%_auto] animate-[shimmer_3s_linear_infinite]">
+                <div class="bg-white dark:bg-surface-dark rounded-xl p-6 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <span class="material-icons-round text-8xl">verified</span>
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-yellow-500/10 text-yellow-500 text-xs font-bold uppercase tracking-wider mb-2">
+                            <span class="material-icons-round text-sm">star</span> Redaktor Seçimi
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Anna's Archive</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4 max-w-2xl">
+                            Dünyanın ən böyük açıq kitabxana axtarış sistemi. Library Genesis, Sci-Hub və Z-Library
+                            daxil
+                            olmaqla onlarla mənbəni əhatə edir.
+                        </p>
+                        <a href="https://annas-archive.org/" target="_blank"
+                            class="inline-flex items-center justify-center px-6 py-2.5 bg-primary text-background-dark font-bold rounded-lg hover:shadow-[0_0_20px_rgba(31,205,239,0.4)] transition-all">
+                            Axtarışa Başla <span class="material-icons-round ml-2">open_in_new</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Links List Section -->
+            <div class="space-y-3" id="links-list">
+
+                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all"
+                    data-category="books">
+                    <div
+                        class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary/10 transition-colors">
+                        <img src="https://www.google.com/s2/favicons?domain=libgen.is&sz=64" alt="Icon"
+                            class="w-6 h-6 opacity-80 group-hover:opacity-100">
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center gap-2 mb-1">
+                            <a href="https://libgen.is/" target="_blank"
+                                class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Library
+                                Genesis</a>
+                            <span
+                                class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-500 uppercase">Kitab</span>
+                        </div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Milyonlarla pulsuz elmi məqalə və tədris
+                            kitabları.</p>
+                    </div>
+                    <div class="hidden sm:block">
+                        <span
+                            class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
+                    </div>
+                </div>
+
+                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all"
+                    data-category="books">
+                    <div
+                        class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary/10 transition-colors">
+                        <img src="https://www.google.com/s2/favicons?domain=annas-archive.org&sz=64" alt="Icon"
+                            class="w-6 h-6 opacity-80 group-hover:opacity-100">
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center gap-2 mb-1">
+                            <a href="https://annas-archive.org/" target="_blank"
+                                class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Anna's
+                                Archive</a>
+                            <span
+                                class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-500 uppercase">Multi-Sourcce</span>
+                        </div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Kitab axtarış motoru, bütün digər
+                            mənbələri
+                            birləşdirir.</p>
+                    </div>
+                    <div class="hidden sm:block">
+                        <span
+                            class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
+                    </div>
+                </div>
+
+                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all"
+                    data-category="course">
+                    <div
+                        class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary/10 transition-colors">
+                        <img src="https://www.google.com/s2/favicons?domain=coursera.org&sz=64" alt="Icon"
+                            class="w-6 h-6 opacity-80 group-hover:opacity-100">
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center gap-2 mb-1">
+                            <a href="https://coursera.org/" target="_blank"
+                                class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Coursera</a>
+                            <span
+                                class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-500 uppercase">Kurs</span>
+                        </div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Qlobal universitetlərdən kurslar. (Maliyyə
+                            yardımı ilə pulsuz istifadə edin)</p>
+                    </div>
+                    <div class="hidden sm:block">
+                        <span
+                            class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
+                    </div>
+                </div>
+
+                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all"
+                    data-category="coding">
+                    <div
+                        class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary/10 transition-colors">
+                        <img src="https://www.google.com/s2/favicons?domain=freecodecamp.org&sz=64" alt="Icon"
+                            class="w-6 h-6 opacity-80 group-hover:opacity-100">
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center gap-2 mb-1">
+                            <a href="https://freecodecamp.org/" target="_blank"
+                                class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">freeCodeCamp</a>
+                            <span
+                                class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/10 text-purple-500 uppercase">Coding</span>
+                        </div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Pulsuz proqramlaşdırma dərsləri və
+                            sertifikatlar.</p>
+                    </div>
+                    <div class="hidden sm:block">
+                        <span
+                            class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-white/10 mt-auto w-full">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2 group">
+                    <span class="material-icons-round text-primary text-2xl">terminal</span>
+                    <span
+                        class="text-xl font-bold tracking-tighter text-slate-900 dark:text-white group-hover:text-primary transition-colors duration-300">
+                        Az<span class="text-primary">Free</span>
+                    </span>
+                </div>
+                <div class="text-slate-500 dark:text-slate-400 text-sm text-center md:text-right">
+                    <p>&copy; 2026 AzFree. Bütün hüquqlar qorunur.</p>
+                    <p class="mt-1">Designed by <span class="text-primary font-medium">KodAura</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-50 bg-slate-900/95 backdrop-blur-sm hidden transition-opacity duration-300">
+        <div class="flex flex-col h-full p-4">
+            <div class="flex justify-end">
+                <button id="mobile-menu-close" class="text-slate-400 hover:text-white p-2">
+                    <span class="material-icons-round text-3xl">close</span>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-4 mt-8 text-center text-xl">
+                <a href="/" class="text-slate-300 hover:text-primary transition-colors">Ana Səhifə</a>
+                <a href="/gaming" class="text-slate-300 hover:text-primary transition-colors">Oyunlar</a>
+                <a href="/movies" class="text-slate-300 hover:text-primary transition-colors">Filmlər</a>
+                <a href="/software" class="text-slate-300 hover:text-primary transition-colors">Proqramlar</a>
+                <a href="/education" class="text-slate-300 hover:text-primary transition-colors">Təhsil</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Wiki Mobile Menu Overlay -->
+    <div id="wiki-menu"
+        class="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm hidden transition-opacity duration-300">
+        <div
+            class="absolute inset-y-0 left-0 w-72 bg-white dark:bg-surface-dark shadow-2xl transform transition-transform duration-300 flex flex-col">
+            <div class="p-4 border-b border-gray-200 dark:border-white/10 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <span class="material-icons-round text-primary">terminal</span>
+                    <span class="font-bold text-slate-900 dark:text-white">Wiki Menyu</span>
+                </div>
+                <button id="wiki-menu-close"
+                    class="p-2 text-slate-500 hover:text-primary rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+                    <span class="material-icons-round">close</span>
+                </button>
+            </div>
+            <div class="p-4 overflow-y-auto h-full">
+                <nav class="space-y-8">
+                    <!-- General Section -->
+                    <div>
+                        <h3 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4 px-2">
+                            Ümumi</h3>
+                        <ul class="space-y-1">
+                            <li>
+                                <a href="/guide"
+                                    class="flex items-center gap-3 px-2 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                    <span
+                                        class="material-icons-round text-lg group-hover:text-primary transition-colors">school</span>
+                                    <span
+                                        class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Başlanğıc
+                                        Rəhbəri</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/contribute"
+                                    class="flex items-center gap-3 px-2 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                    <span
+                                        class="material-icons-round text-lg group-hover:text-primary transition-colors">volunteer_activism</span>
+                                    <span
+                                        class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Töhfə
+                                        Ver</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Wiki Section -->
+                    <div>
+                        <h3 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4 px-2">
+                            Wiki</h3>
+                        <ul class="space-y-1">
+                            <li>
+                                <a href="/gaming"
+                                    class="flex items-center gap-3 px-2 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                    <span
+                                        class="material-icons-round text-lg group-hover:text-primary transition-colors">sports_esports</span>
+                                    <span
+                                        class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Oyunlar</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/movies"
+                                    class="flex items-center gap-3 px-2 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                    <span
+                                        class="material-icons-round text-lg group-hover:text-primary transition-colors">movie</span>
+                                    <span
+                                        class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Filmlər</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/software"
+                                    class="flex items-center gap-3 px-2 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                    <span
+                                        class="material-icons-round text-lg group-hover:text-primary transition-colors">desktop_windows</span>
+                                    <span
+                                        class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Proqramlar</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/education"
+                                    class="flex items-center gap-3 px-2 py-3 bg-primary/10 text-primary rounded-lg transition-colors">
+                                    <span class="material-icons-round text-lg">menu_book</span>
+                                    <span class="text-sm font-bold">Təhsil</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/privacy"
+                                    class="flex items-center gap-3 px-2 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                    <span
+                                        class="material-icons-round text-lg group-hover:text-primary transition-colors">security</span>
+                                    <span
+                                        class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Məxfilik</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Search Overlay -->
+    <div id="global-search-overlay" class="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm hidden">
+        <div class="flex items-start justify-center pt-20 px-4">
+            <div class="bg-white dark:bg-surface-dark rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden">
+                <div class="p-4 border-b border-gray-200 dark:border-white/10">
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="material-icons-round text-slate-400">search</span>
+                        </span>
+                        <input id="global-search-input" type="text" placeholder="Axtarış... (Ctrl+K)"
+                            class="w-full pl-10 pr-4 py-3 bg-slate-100 dark:bg-white/5 border-0 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-primary" />
+                    </div>
+                </div>
+                <div id="global-search-results" class="max-h-96 overflow-y-auto">
+                    <p class="text-slate-400 text-sm p-4">Axtarış üçün yazmağa başlayın...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+    <script src="/assets/js/search.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+
+        // Mobile theme toggle sync
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        if (themeToggleMobile) {
+            themeToggleMobile.addEventListener('click', () => {
+                document.getElementById('theme-toggle').click();
+                setTimeout(() => {
+                    const theme = localStorage.getItem('azfree-theme') || 'dark';
+                    themeIconMobile.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
+                }, 100);
+            });
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const items = document.querySelectorAll('.link-item');
+            const searchInput = document.getElementById('local-search');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const category = btn.getAttribute('data-filter');
+
+                    // Update visual state
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-primary', 'text-background-dark');
+                        b.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+                    });
+                    btn.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+                    btn.classList.add('bg-primary', 'text-background-dark');
+
+                    items.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'flex';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const query = e.target.value.toLowerCase();
+                    items.forEach(item => {
+                        const text = item.innerText.toLowerCase();
+                        if (text.includes(query)) {
+                            item.style.display = 'flex';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html class="dark" lang="az">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Torrent Necə İşləyir? - AzFree Blog</title>
+    <meta name="description"
+        content="Torrent protokolu, P2P şəbəkələri və təhlükəsiz yükləmə üçün addım-addım təlimat" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1fcdef" />
+    <link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1fcdef",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#020617",
+                        "surface-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1fcdef;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-display selection:bg-primary selection:text-black min-h-screen flex flex-col">
+    <header
+        class="fixed top-0 w-full z-50 backdrop-blur-md bg-white/70 dark:bg-background-dark/80 border-b border-gray-200 dark:border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a class="flex items-center gap-2 group" href="/">
+                        <span class="material-icons-round text-primary text-3xl">terminal</span>
+                        <span
+                            class="text-2xl font-bold tracking-tighter text-slate-900 dark:text-white group-hover:text-primary transition-colors duration-300">
+                            Az<span class="text-primary">Free</span>
+                        </span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+                        href="/">Ana Səhifə</a>
+                    <a class="text-sm font-medium text-primary" href="/blog">Blog</a>
+                    <a class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+                        href="/faq">FAQ</a>
+                    <button id="theme-toggle"
+                        class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+                        <span id="theme-icon"
+                            class="material-icons-round text-slate-700 dark:text-slate-300">light_mode</span>
+                    </button>
+                    <button onclick="openGlobalSearch()"
+                        class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+                        <span class="material-icons-round text-slate-700 dark:text-slate-300">search</span>
+                    </button>
+                </nav>
+                <div class="md:hidden flex items-center gap-2">
+                    <button id="theme-toggle-mobile"
+                        class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+                        <span id="theme-icon-mobile" class="material-icons-round text-slate-300">light_mode</span>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
+                        <span class="material-icons-round text-2xl">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <article class="max-w-4xl mx-auto pt-32 pb-16 px-4 sm:px-6 lg:px-8 w-full">
+        <header class="mb-12">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="text-xs px-3 py-1 rounded-full bg-green-500/10 text-green-500 font-medium">Rəhbər</span>
+                <span class="text-sm text-slate-400">10 Fevral 2026</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+                Torrent Necə İşləyir?
+            </h1>
+            <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+                Torrent protokolu, P2P şəbəkələri və təhlükəsiz yükləmə üçün addım-addım təlimat.
+            </p>
+        </header>
+
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <div class="bg-green-500/5 border-l-4 border-green-500 p-6 rounded-r-lg mb-8">
+                <p class="text-slate-700 dark:text-slate-300 m-0">
+                    <strong>Qısa xülasə:</strong> Torrent - böyük faylları sürətli və effektiv şəkildə yükləmək üçün P2P
+                    (peer-to-peer) texnologiyasıdır.
+                </p>
+            </div>
+
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-12 mb-6">Torrent Nədir?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                Torrent - faylların bir mərkəzi serverdən deyil, bir-birindən (peer-to-peer) yüklənməsi protokoludur. Bu
+                texnologiya 2001-ci ildə Bram Cohen tərəfindən yaradılıb və indi internetdə ən populyar fayl paylaşım
+                metodudur.
+            </p>
+
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-10 mb-4">Adi Yükləmə vs Torrent</h3>
+            <div class="grid md:grid-cols-2 gap-6 my-8">
+                <div class="bg-slate-100 dark:bg-surface-dark rounded-xl p-6">
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Adi Yükləmə (HTTP)</h4>
+                    <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-2">
+                        <li>✗ Bir serverdən yüklənir</li>
+                        <li>✗ Server yavaşsa, yükləmə yavaşdır</li>
+                        <li>✗ Server bağlanırsa, yükləmə dayanır</li>
+                        <li>✓ Sadə və rahatdır</li>
+                    </ul>
+                </div>
+                <div class="bg-green-500/10 border border-green-500/30 rounded-xl p-6">
+                    <h4 class="text-lg font-bold text-green-600 dark:text-green-400 mb-3">Torrent (P2P)</h4>
+                    <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-2">
+                        <li>✓ Çoxlu mənbədən eyni anda yüklənir</li>
+                        <li>✓ Daha sürətlidir</li>
+                        <li>✓ Bir mənbə bağlansa, digərləri davam edir</li>
+                        <li>✗ Torrent client lazımdır</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-12 mb-6">Torrent Necə İşləyir?</h2>
+            <ol class="list-decimal list-inside space-y-4 text-slate-600 dark:text-slate-400 mb-6">
+                <li><strong>Torrent faylı (.torrent)</strong> - Kiçik bir fayl ki, yükləmək istədiyiniz faylın
+                    məlumatlarını saxlayır</li>
+                <li><strong>Tracker</strong> - Həmin faylı kimlərin paylaşdığını (seeders) və kimlərin yüklədiyini
+                    (leechers) izləyir</li>
+                <li><strong>Seeders</strong> - Faylın tam versiyasına malik olan və paylaşan istifadəçilər</li>
+                <li><strong>Leechers</strong> - Hələ yükləyən istifadəçilər</li>
+                <li><strong>Pieces</strong> - Fayl kiçik hissələrə bölünür və hər hissə ayrı-ayrı yüklənir</li>
+            </ol>
+
+            <div class="bg-slate-100 dark:bg-surface-dark rounded-xl p-6 my-8">
+                <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                    <span class="material-icons-round text-primary">info</span>
+                    Nümunə
+                </h4>
+                <p class="text-slate-600 dark:text-slate-400 m-0">
+                    Tutaq ki, 10 GB oyun yükləyirsiniz. Torrent bu faylı 1000 kiçik hissəyə bölür. Siz eyni anda 50
+                    nəfərdən müxtəlif hissələri yükləyirsiniz. Bir nəfər oflayn olsa belə, qalanları davam edir. Yükləmə
+                    bitdikdən sonra siz də "seeder" olursunuz və başqalarına kömək edirsiniz.
+                </p>
+            </div>
+
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-12 mb-6">Torrent Client Seçimi</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                Torrent yükləmək üçün xüsusi proqram - <strong>Torrent Client</strong> lazımdır. Ən populyar və
+                təhlükəsiz seçimlər:
+            </p>
+
+            <div class="space-y-4 mb-8">
+                <div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 rounded-xl p-6">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">qBittorrent</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Açıq mənbəli, reklamssız, yüngül
+                            </p>
+                            <span class="text-xs px-2 py-1 rounded-full bg-green-500/10 text-green-500">Tövsiyə
+                                olunur</span>
+                        </div>
+                        <span class="text-3xl">🏆</span>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 rounded-xl p-6">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Transmission</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Minimalist interfeys, macOS və
+                                Linux üçün ideal</p>
+                        </div>
+                        <span class="text-3xl">✓</span>
+                    </div>
+                </div>
+                <div class="bg-red-500/5 border border-red-500/30 rounded-xl p-6">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h4 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2">uTorrent / BitTorrent</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Əvvəllər populyar idi, amma indi
+                                reklamlarla doludur</p>
+                            <span class="text-xs px-2 py-1 rounded-full bg-red-500/10 text-red-500">Tövsiyə
+                                olunmur</span>
+                        </div>
+                        <span class="text-3xl">✗</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-12 mb-6">Addım-Addım Torrent Yükləmə</h2>
+
+            <div class="space-y-6 mb-8">
+                <div class="flex gap-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                        1</div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-2">qBittorrent Yükləyin</h4>
+                        <p class="text-slate-600 dark:text-slate-400">Rəsmi saytdan (qbittorrent.org) yükləyib
+                            quraşdırın.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                        2</div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-2">Torrent Saytına Gedin</h4>
+                        <p class="text-slate-600 dark:text-slate-400">Məsələn: 1337x.to, rutracker.org, rarbg (VPN lazım
+                            ola bilər)</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                        3</div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-2">Axtarış Edin</h4>
+                        <p class="text-slate-600 dark:text-slate-400">İstədiyiniz oyun, film və ya proqramı axtarın.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                        4</div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-2">Seeders Yoxlayın</h4>
+                        <p class="text-slate-600 dark:text-slate-400">Çox seeder olan torrenti seçin (məsələn: 500+
+                            seeders)</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                        5</div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-2">.torrent Faylını Yükləyin</h4>
+                        <p class="text-slate-600 dark:text-slate-400">"Download Torrent" düyməsinə basın (Magnet link də
+                            işləyir)</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                        6</div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-2">qBittorrent-də Açın</h4>
+                        <p class="text-slate-600 dark:text-slate-400">Fayl avtomatik açılacaq, yükləmə başlayacaq.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-red-500/10 border-l-4 border-red-500 p-6 rounded-r-lg my-8">
+                <h4 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2 flex items-center gap-2">
+                    <span class="material-icons-round">warning</span>
+                    Təhlükəsizlik Qaydaları
+                </h4>
+                <ul class="text-slate-700 dark:text-slate-300 space-y-2 m-0">
+                    <li>✓ Həmişə VPN istifadə edin</li>
+                    <li>✓ Adblock quraşdırın (torrent saytlarında çox reklam var)</li>
+                    <li>✓ Yalnız yüksək reytinqli uploaderlərdən yükləyin</li>
+                    <li>✓ Yükləmədən əvvəl şərhləri oxuyun</li>
+                    <li>✗ .exe faylları olan torrentlərdən çəkinin (virus ola bilər)</li>
+                </ul>
+            </div>
+
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-12 mb-6">Tez-tez Verilən Suallar</h2>
+
+            <div class="space-y-4 mb-8">
+                <details class="bg-slate-100 dark:bg-surface-dark rounded-lg p-4">
+                    <summary class="font-bold text-slate-900 dark:text-white cursor-pointer">Torrent istifadəsi qanunsuz
+                        deyilmi?</summary>
+                    <p class="text-slate-600 dark:text-slate-400 mt-3">Torrent texnologiyası özü qanunidir. Amma müəllif
+                        hüquqlu məzmunu (filmlər, oyunlar) qanunsuz paylaşmaq qadağandır. Açıq mənbəli proqramlar, Linux
+                        distributivləri və s. qanuni şəkildə torrentlə yayılır.</p>
+                </details>
+                <details class="bg-slate-100 dark:bg-surface-dark rounded-lg p-4">
+                    <summary class="font-bold text-slate-900 dark:text-white cursor-pointer">Niyə yükləmə sürəti
+                        yavaşdır?</summary>
+                    <p class="text-slate-600 dark:text-slate-400 mt-3">Az seeder varsa və ya VPN istifadə edirsinizsə
+                        sürət yavaş ola bilər. Həmçinin, qBittorrent-in parametrlərində sürət limiti yoxlayın.</p>
+                </details>
+                <details class="bg-slate-100 dark:bg-surface-dark rounded-lg p-4">
+                    <summary class="font-bold text-slate-900 dark:text-white cursor-pointer">"Seeding" nədir və
+                        dayandırmalıyam?</summary>
+                    <p class="text-slate-600 dark:text-slate-400 mt-3">Yükləmə bitdikdən sonra siz də faylı paylaşmağa
+                        başlayırsınız (seeding). Bu, torrent icmasının işləməsi üçün vacibdir. Amma VPN-siz uzun müddət
+                        seeding etmək tövsiyə olunmur.</p>
+                </details>
+            </div>
+
+            <div
+                class="bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-2xl p-8 text-center border border-green-500/20 mt-12">
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Nəticə</h3>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                    Torrent - böyük faylları sürətli və etibarlı şəkildə yükləmək üçün əla texnologiyadır. Düzgün
+                    client, VPN və təhlükəsizlik qaydalarına riayət etməklə təhlükəsiz istifadə edə bilərsiniz.
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-white/10">
+            <a href="/blog" class="inline-flex items-center text-primary font-medium hover:underline">
+                <span class="material-icons-round mr-2">arrow_back</span>
+                Bloga qayıt
+            </a>
+        </div>
+    </article>
+
+    <footer class="bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-white/10 mt-auto w-full">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2 group">
+                    <span class="material-icons-round text-primary text-2xl">terminal</span>
+                    <span
+                        class="text-xl font-bold tracking-tighter text-slate-900 dark:text-white group-hover:text-primary transition-colors duration-300">
+                        Az<span class="text-primary">Free</span>
+                    </span>
+                </div>
+                <div class="text-slate-500 dark:text-slate-400 text-sm text-center md:text-right">
+                    <p>&copy; 2026 AzFree. Bütün hüquqlar qorunur.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-slate-900/95 backdrop-blur-sm hidden">
+        <div class="flex flex-col h-full p-4">
+            <div class="flex justify-end">
+                <button id="mobile-menu-close" class="text-slate-400 hover:text-white p-2">
+                    <span class="material-icons-round text-3xl">close</span>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-4 mt-8 text-center text-xl">
+                <a href="/" class="text-slate-300 hover:text-primary transition-colors">Ana Səhifə</a>
+                <a href="/gaming" class="text-slate-300 hover:text-primary transition-colors">Oyunlar</a>
+                <a href="/movies" class="text-slate-300 hover:text-primary transition-colors">Filmlər</a>
+                <a href="/software" class="text-slate-300 hover:text-primary transition-colors">Proqramlar</a>
+                <a href="/education" class="text-slate-300 hover:text-primary transition-colors">Təhsil</a>
+                <a href="/blog" class="text-primary font-bold">Blog</a>
+                <a href="/faq" class="text-slate-300 hover:text-primary transition-colors">FAQ</a>
+            </nav>
+        </div>
+    </div>
+
+    <div id="global-search-overlay" class="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm hidden">
+        <div class="flex items-start justify-center pt-20 px-4">
+            <div class="bg-white dark:bg-surface-dark rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden">
+                <div class="p-4 border-b border-gray-200 dark:border-white/10">
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="material-icons-round text-slate-400">search</span>
+                        </span>
+                        <input id="global-search-input" type="text" placeholder="Axtarış... (Ctrl+K)"
+                            class="w-full pl-10 pr-4 py-3 bg-slate-100 dark:bg-white/5 border-0 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-primary" />
+                    </div>
+                </div>
+                <div id="global-search-results" class="max-h-96 overflow-y-auto">
+                    <p class="text-slate-400 text-sm p-4">Axtarış üçün yazmağa başlayın...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+    <script src="/assets/js/search.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        if (themeToggleMobile) {
+            themeToggleMobile.addEventListener('click', () => {
+                document.getElementById('theme-toggle').click();
+                setTimeout(() => {
+                    const theme = localStorage.getItem('azfree-theme') || 'dark';
+                    themeIconMobile.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
+                }, 100);
+            });
+        }
+    </script>
+</body>
+
+</html>

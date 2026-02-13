@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="dark" lang="az">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Blog - AzFree</title>
+    <meta name="description" content="Texnologiya, təhlükəsizlik və rəqəmsal resurslar haqqında məqalələr" />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1fcdef" />
+    <link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <!-- Tailwind Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1fcdef",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#020617",
+                        "surface-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 5rem;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1fcdef;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-display selection:bg-primary selection:text-black min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header
+        class="fixed top-0 w-full z-50 backdrop-blur-md bg-white/70 dark:bg-background-dark/80 border-b border-gray-200 dark:border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a class="flex items-center gap-2 group" href="/">
+                        <span class="material-icons-round text-primary text-3xl">terminal</span>
+                        <span
+                            class="text-2xl font-bold tracking-tighter text-slate-900 dark:text-white group-hover:text-primary transition-colors duration-300">
+                            Az<span class="text-primary">Free</span>
+                        </span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+                        href="/">Ana Səhifə</a>
+                    <a class="text-sm font-medium text-primary" href="/blog">Blog</a>
+                    <a class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+                        href="/faq">FAQ</a>
+                    <button id="theme-toggle"
+                        class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+                        <span id="theme-icon"
+                            class="material-icons-round text-slate-700 dark:text-slate-300">light_mode</span>
+                    </button>
+                    <button onclick="openGlobalSearch()"
+                        class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+                        <span class="material-icons-round text-slate-700 dark:text-slate-300">search</span>
+                    </button>
+                </nav>
+                <div class="md:hidden flex items-center gap-2">
+                    <button id="theme-toggle-mobile"
+                        class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+                        <span id="theme-icon-mobile" class="material-icons-round text-slate-300">light_mode</span>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
+                        <span class="material-icons-round text-2xl">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto pt-28 pb-12 px-4 sm:px-6 lg:px-8 w-full">
+        <div class="mb-12 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+                Blog & Məqalələr
+            </h1>
+            <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
+                Texnologiya, təhlükəsizlik və rəqəmsal resurslar haqqında faydalı məqalələr
+            </p>
+        </div>
+
+        <!-- Blog Posts Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Post 1 -->
+            <article
+                class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-white/10 overflow-hidden hover:border-primary/50 transition-all group">
+                <div class="h-48 bg-gradient-to-br from-primary/20 to-blue-500/20 flex items-center justify-center">
+                    <span class="material-icons-round text-6xl text-primary">vpn_lock</span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">Təhlükəsizlik</span>
+                        <span class="text-xs text-slate-400">12 Fevral 2026</span>
+                    </div>
+                    <h3
+                        class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">
+                        VPN Nədir və Niyə Lazımdır?
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                        Virtual Private Network (VPN) texnologiyası, onun işləmə prinsipi və Azərbaycanda istifadə
+                        qaydaları haqqında ətraflı məlumat.
+                    </p>
+                    <a href="/blog/vpn-nedir/"
+                        class="inline-flex items-center text-primary font-medium hover:underline">
+                        Oxu <span class="material-icons-round text-sm ml-1">arrow_forward</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article
+                class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-white/10 overflow-hidden hover:border-primary/50 transition-all group">
+                <div
+                    class="h-48 bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center">
+                    <span class="material-icons-round text-6xl text-green-500">cloud_download</span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-xs px-2 py-1 rounded-full bg-green-500/10 text-green-500">Rəhbər</span>
+                        <span class="text-xs text-slate-400">10 Fevral 2026</span>
+                    </div>
+                    <h3
+                        class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">
+                        Torrent Necə İşləyir?
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                        Torrent protokolu, P2P şəbəkələri və təhlükəsiz yükləmə üçün addım-addım təlimat.
+                    </p>
+                    <a href="/blog/torrent-rehber/"
+                        class="inline-flex items-center text-primary font-medium hover:underline">
+                        Oxu <span class="material-icons-round text-sm ml-1">arrow_forward</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article
+                class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-white/10 overflow-hidden hover:border-primary/50 transition-all group">
+                <div class="h-48 bg-gradient-to-br from-red-500/20 to-orange-500/20 flex items-center justify-center">
+                    <span class="material-icons-round text-6xl text-red-500">block</span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-xs px-2 py-1 rounded-full bg-red-500/10 text-red-500">Təhlükəsizlik</span>
+                        <span class="text-xs text-slate-400">8 Fevral 2026</span>
+                    </div>
+                    <h3
+                        class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">
+                        Zərərli Reklamlardan Qorunma
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+                        Adblock quraşdırılması, təhlükəli pop-uplardan qaçınma və brauzer təhlükəsizliyi üzrə
+                        məsləhətlər.
+                    </p>
+                    <a href="/blog/adblock-qurulumu/"
+                        class="inline-flex items-center text-primary font-medium hover:underline">
+                        Oxu <span class="material-icons-round text-sm ml-1">arrow_forward</span>
+                    </a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Coming Soon Notice -->
+        <div class="mt-12 text-center bg-slate-100 dark:bg-white/5 rounded-2xl p-8">
+            <span class="material-icons-round text-4xl text-slate-400 mb-4">edit_note</span>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Daha Çox Məqalə Yolda</h3>
+            <p class="text-slate-500 dark:text-slate-400">
+                Yeni məqalələr tezliklə əlavə olunacaq. Xəbərdar olmaq üçün səhifəni yadda saxlayın!
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-white/10 mt-auto w-full">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2 group">
+                    <span class="material-icons-round text-primary text-2xl">terminal</span>
+                    <span
+                        class="text-xl font-bold tracking-tighter text-slate-900 dark:text-white group-hover:text-primary transition-colors duration-300">
+                        Az<span class="text-primary">Free</span>
+                    </span>
+                </div>
+                <div class="text-slate-500 dark:text-slate-400 text-sm text-center md:text-right">
+                    <p>&copy; 2026 AzFree. Bütün hüquqlar qorunur.</p>
+                    <p class="mt-1">Designed by <span class="text-primary font-medium">KodAura</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-50 bg-slate-900/95 backdrop-blur-sm hidden transition-opacity duration-300">
+        <div class="flex flex-col h-full p-4">
+            <div class="flex justify-end">
+                <button id="mobile-menu-close" class="text-slate-400 hover:text-white p-2">
+                    <span class="material-icons-round text-3xl">close</span>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-4 mt-8 text-center text-xl">
+                <a href="/" class="text-slate-300 hover:text-primary transition-colors">Ana Səhifə</a>
+                <a href="/gaming" class="text-slate-300 hover:text-primary transition-colors">Oyunlar</a>
+                <a href="/movies" class="text-slate-300 hover:text-primary transition-colors">Filmlər</a>
+                <a href="/software" class="text-slate-300 hover:text-primary transition-colors">Proqramlar</a>
+                <a href="/education" class="text-slate-300 hover:text-primary transition-colors">Təhsil</a>
+                <a href="/blog" class="text-primary font-bold">Blog</a>
+                <a href="/faq" class="text-slate-300 hover:text-primary transition-colors">FAQ</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Global Search Overlay -->
+    <div id="global-search-overlay" class="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm hidden">
+        <div class="flex items-start justify-center pt-20 px-4">
+            <div class="bg-white dark:bg-surface-dark rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden">
+                <div class="p-4 border-b border-gray-200 dark:border-white/10">
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="material-icons-round text-slate-400">search</span>
+                        </span>
+                        <input id="global-search-input" type="text" placeholder="Axtarış... (Ctrl+K)"
+                            class="w-full pl-10 pr-4 py-3 bg-slate-100 dark:bg-white/5 border-0 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-primary" />
+                    </div>
+                </div>
+                <div id="global-search-results" class="max-h-96 overflow-y-auto">
+                    <p class="text-slate-400 text-sm p-4">Axtarış üçün yazmağa başlayın...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+    <script src="/assets/js/search.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script>
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(reg => console.log('Service Worker registered'))
+                .catch(err => console.log('Service Worker registration failed'));
+        }
+
+        // Mobile theme toggle
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        if (themeToggleMobile) {
+            themeToggleMobile.addEventListener('click', () => {
+                document.getElementById('theme-toggle').click();
+                setTimeout(() => {
+                    const theme = localStorage.getItem('azfree-theme') || 'dark';
+                    themeIconMobile.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
+                }, 100);
+            });
+        }
+    </script>
+</body>
+
+</html>

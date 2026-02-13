@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html class="dark" lang="az">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>VPN Nədir və Niyə Lazımdır? - AzFree Blog</title>
+    <meta name="description"
+        content="Virtual Private Network (VPN) texnologiyası, onun işləmə prinsipi və Azərbaycanda istifadə qaydaları" />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1fcdef" />
+    <link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1fcdef",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#020617",
+                        "surface-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1fcdef;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-display selection:bg-primary selection:text-black min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header
+        class="fixed top-0 w-full z-50 backdrop-blur-md bg-white/70 dark:bg-background-dark/80 border-b border-gray-200 dark:border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a class="flex items-center gap-2 group" href="/">
+                        <span class="material-icons-round text-primary text-3xl">terminal</span>
+                        <span
+                            class="text-2xl font-bold tracking-tighter text-slate-900 dark:text-white group-hover:text-primary transition-colors duration-300">
+                            Az<span class="text-primary">Free</span>
+                        </span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+                        href="/">Ana Səhifə</a>
+                    <a class="text-sm font-medium text-primary" href="/blog">Blog</a>
+                    <a class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+                        href="/faq">FAQ</a>
+                    <button id="theme-toggle"
+                        class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+                        <span id="theme-icon"
+                            class="material-icons-round text-slate-700 dark:text-slate-300">light_mode</span>
+                    </button>
+                    <button onclick="openGlobalSearch()"
+                        class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+                        <span class="material-icons-round text-slate-700 dark:text-slate-300">search</span>
+                    </button>
+                </nav>
+                <div class="md:hidden flex items-center gap-2">
+                    <button id="theme-toggle-mobile"
+                        class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+                        <span id="theme-icon-mobile" class="material-icons-round text-slate-300">light_mode</span>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
+                        <span class="material-icons-round text-2xl">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <article class="max-w-4xl mx-auto pt-32 pb-16 px-4 sm:px-6 lg:px-8 w-full">
+        <!-- Article Header -->
+        <header class="mb-12">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">Təhlükəsizlik</span>
+                <span class="text-sm text-slate-400">12 Fevral 2026</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+                VPN Nədir və Niyə Lazımdır?
+            </h1>
+            <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+                Virtual Private Network texnologiyası, onun işləmə prinsipi və Azərbaycanda təhlükəsiz istifadə
+                qaydaları haqqında ətraflı məlumat.
+            </p>
+        </header>
+
+        <!-- Article Body -->
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+            <div class="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg mb-8">
+                <p class="text-slate-700 dark:text-slate-300 m-0">
+                    <strong>Qısa xülasə:</strong> VPN sizin internet trafikinizi şifrələyərək məxfiliyinizi qoruyur və
+                    bloklanmış saytlara giriş imkanı verir.
+                </p>
+            </div>
+
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-12 mb-6">VPN Nədir?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                <strong>VPN (Virtual Private Network)</strong> - virtual şəxsi şəbəkə, sizin cihazınızla internet
+                arasında şifrələnmiş bir tunel yaradır. Bu texnologiya ilk növbədə korporativ şəbəkələr üçün yaradılsa
+                da, indi fərdi istifadəçilər arasında da çox populyardır.
+            </p>
+
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-10 mb-4">VPN Necə İşləyir?</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                Normal halda, siz bir sayta daxil olanda, sizin İnternet Provayderi (ISP) bütün fəaliyyətinizi görür.
+                VPN istifadə etdikdə isə:
+            </p>
+            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-6">
+                <li>Sizin trafikiniz şifrələnir</li>
+                <li>VPN serverinə göndərilir</li>
+                <li>VPN serveri sizin adınızdan sayta sorğu göndərir</li>
+                <li>Cavab yenə şifrələnmiş şəkildə sizə qayıdır</li>
+            </ol>
+
+            <div class="bg-slate-100 dark:bg-surface-dark rounded-xl p-6 my-8">
+                <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                    <span class="material-icons-round text-primary">lightbulb</span>
+                    Nümunə
+                </h4>
+                <p class="text-slate-600 dark:text-slate-400 m-0">
+                    Tutaq ki, Azərbaycanda yaşayırsınız və bloklanmış bir sayta daxil olmaq istəyirsiniz. VPN-i
+                    aktivləşdirdikdə, məsələn, Almaniya serverini seçirsiniz. İndi sayt sizin Almaniyadan daxil
+                    olduğunuzu "görür" və bloklama işləmir.
+                </p>
+            </div>
+
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-12 mb-6">VPN-dən Nə Üçün İstifadə Olunur?
+            </h2>
+
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">1. Məxfiliyin Qorunması</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                İnternet provayderi, hökumət və ya haker qrupları sizin onlayn fəaliyyətinizi izləyə bilər. VPN bu
+                məlumatları şifrələyir və heç kim nə etdiyinizi görə bilmir.
+            </p>
+
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">2. Bloklanmış Saytlara Giriş</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                Bəzi ölkələrdə sosial şəbəkələr, xəbər saytları və ya torrent platformaları bloklanır. VPN bu
+                məhdudiyyətləri aşmağa kömək edir.
+            </p>
+
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">3. İctimai Wi-Fi-də Təhlükəsizlik
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                Kafe, hava limanı və ya mehmanxanalarda açıq Wi-Fi şəbəkələrinə qoşularkən VPN istifadə etmək vacibdir.
+                Əks halda, hakerlar sizin məlumatlarınızı asan şəkildə ələ keçirə bilər.
+            </p>
+
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-12 mb-6">Hansı VPN-i Seçmək Lazımdır?</h2>
+
+            <div class="grid md:grid-cols-2 gap-6 my-8">
+                <div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 rounded-xl p-6">
+                    <h4 class="text-lg font-bold text-green-500 mb-3">✓ Pulsuz Seçim</h4>
+                    <p class="font-bold text-slate-900 dark:text-white mb-2">ProtonVPN</p>
+                    <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-1">
+                        <li>• Limitsiz trafik</li>
+                        <li>• No-logs siyasəti</li>
+                        <li>• 3 ölkə (pulsuz planda)</li>
+                        <li>• Orta sürət</li>
+                    </ul>
+                </div>
+                <div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 rounded-xl p-6">
+                    <h4 class="text-lg font-bold text-primary mb-3">★ Ödənişli Seçim</h4>
+                    <p class="font-bold text-slate-900 dark:text-white mb-2">Mullvad VPN</p>
+                    <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-1">
+                        <li>• €5/ay (sabit qiymət)</li>
+                        <li>• Anonim qeydiyyat</li>
+                        <li>• 40+ ölkə</li>
+                        <li>• Maksimum sürət</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-red-500/10 border-l-4 border-red-500 p-6 rounded-r-lg my-8">
+                <h4 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2 flex items-center gap-2">
+                    <span class="material-icons-round">warning</span>
+                    Diqqət!
+                </h4>
+                <p class="text-slate-700 dark:text-slate-300 m-0">
+                    Pulsuz VPN-lərin əksəriyyəti sizin məlumatlarınızı üçüncü tərəflərə satır. Yalnız etibarlı və məşhur
+                    VPN xidmətlərindən istifadə edin. "Çox ucuz" və ya "tamamilə pulsuz limitsiz" təkliflərdən çəkinin.
+                </p>
+            </div>
+
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-12 mb-6">VPN Quraşdırma Addımları</h2>
+            <ol class="list-decimal list-inside space-y-4 text-slate-600 dark:text-slate-400 mb-6">
+                <li><strong>VPN provayderi seçin</strong> - Yuxarıda göstərilən tövsiyələrdən birini seçə bilərsiniz
+                </li>
+                <li><strong>Qeydiyyatdan keçin</strong> - E-poçt və şifrə ilə hesab yaradın</li>
+                <li><strong>Tətbiqi yükləyin</strong> - Windows, macOS, Android, iOS üçün rəsmi tətbiq mövcuddur</li>
+                <li><strong>Giriş edin</strong> - Hesab məlumatlarınızı daxil edin</li>
+                <li><strong>Server seçin</strong> - Ölkə siyahısından istədiyiniz yeri seçin</li>
+                <li><strong>Qoşulun</strong> - "Connect" düyməsinə basın və gözləyin</li>
+            </ol>
+
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-12 mb-6">Tez-tez Verilən Suallar</h2>
+
+            <div class="space-y-4 mb-8">
+                <details class="bg-slate-100 dark:bg-surface-dark rounded-lg p-4">
+                    <summary class="font-bold text-slate-900 dark:text-white cursor-pointer">VPN istifadəsi qanunidirmi?
+                    </summary>
+                    <p class="text-slate-600 dark:text-slate-400 mt-3">Azərbaycanda VPN istifadəsi qanuni deyil, amma
+                        praktikada milyonlarla insan istifadə edir. Əsas odur ki, VPN-i qanunsuz fəaliyyətlər üçün
+                        istifadə etməyəsiniz.</p>
+                </details>
+                <details class="bg-slate-100 dark:bg-surface-dark rounded-lg p-4">
+                    <summary class="font-bold text-slate-900 dark:text-white cursor-pointer">VPN sürəti azaldırmı?
+                    </summary>
+                    <p class="text-slate-600 dark:text-slate-400 mt-3">Bəli, şifrələmə prosesi səbəbindən 10-30% sürət
+                        itkisi ola bilər. Amma keyfiyyətli VPN-lərdə bu fərq hiss olunmur.</p>
+                </details>
+                <details class="bg-slate-100 dark:bg-surface-dark rounded-lg p-4">
+                    <summary class="font-bold text-slate-900 dark:text-white cursor-pointer">Mobil telefonumda VPN
+                        işləyirmi?</summary>
+                    <p class="text-slate-600 dark:text-slate-400 mt-3">Əlbəttə! Bütün böyük VPN provayderləri Android və
+                        iOS üçün tətbiqlər təqdim edir.</p>
+                </details>
+            </div>
+
+            <div
+                class="bg-gradient-to-r from-primary/10 to-blue-500/10 rounded-2xl p-8 text-center border border-primary/20 mt-12">
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Nəticə</h3>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                    VPN müasir internetdə məxfiliyin və təhlükəsizliyin əsas alətlərindən biridir. Düzgün seçilmiş VPN
+                    xidməti sizə həm bloklanmış resurslara giriş, həm də şəxsi məlumatlarınızın qorunması imkanı verir.
+                </p>
+            </div>
+        </div>
+
+        <!-- Back to Blog -->
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-white/10">
+            <a href="/blog" class="inline-flex items-center text-primary font-medium hover:underline">
+                <span class="material-icons-round mr-2">arrow_back</span>
+                Bloga qayıt
+            </a>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-white/10 mt-auto w-full">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2 group">
+                    <span class="material-icons-round text-primary text-2xl">terminal</span>
+                    <span
+                        class="text-xl font-bold tracking-tighter text-slate-900 dark:text-white group-hover:text-primary transition-colors duration-300">
+                        Az<span class="text-primary">Free</span>
+                    </span>
+                </div>
+                <div class="text-slate-500 dark:text-slate-400 text-sm text-center md:text-right">
+                    <p>&copy; 2026 AzFree. Bütün hüquqlar qorunur.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-slate-900/95 backdrop-blur-sm hidden">
+        <div class="flex flex-col h-full p-4">
+            <div class="flex justify-end">
+                <button id="mobile-menu-close" class="text-slate-400 hover:text-white p-2">
+                    <span class="material-icons-round text-3xl">close</span>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-4 mt-8 text-center text-xl">
+                <a href="/" class="text-slate-300 hover:text-primary transition-colors">Ana Səhifə</a>
+                <a href="/gaming" class="text-slate-300 hover:text-primary transition-colors">Oyunlar</a>
+                <a href="/movies" class="text-slate-300 hover:text-primary transition-colors">Filmlər</a>
+                <a href="/software" class="text-slate-300 hover:text-primary transition-colors">Proqramlar</a>
+                <a href="/education" class="text-slate-300 hover:text-primary transition-colors">Təhsil</a>
+                <a href="/blog" class="text-primary font-bold">Blog</a>
+                <a href="/faq" class="text-slate-300 hover:text-primary transition-colors">FAQ</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Global Search -->
+    <div id="global-search-overlay" class="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm hidden">
+        <div class="flex items-start justify-center pt-20 px-4">
+            <div class="bg-white dark:bg-surface-dark rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden">
+                <div class="p-4 border-b border-gray-200 dark:border-white/10">
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="material-icons-round text-slate-400">search</span>
+                        </span>
+                        <input id="global-search-input" type="text" placeholder="Axtarış... (Ctrl+K)"
+                            class="w-full pl-10 pr-4 py-3 bg-slate-100 dark:bg-white/5 border-0 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-primary" />
+                    </div>
+                </div>
+                <div id="global-search-results" class="max-h-96 overflow-y-auto">
+                    <p class="text-slate-400 text-sm p-4">Axtarış üçün yazmağa başlayın...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+    <script src="/assets/js/search.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+
+        // Mobile theme toggle
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        if (themeToggleMobile) {
+            themeToggleMobile.addEventListener('click', () => {
+                document.getElementById('theme-toggle').click();
+                setTimeout(() => {
+                    const theme = localStorage.getItem('azfree-theme') || 'dark';
+                    themeIconMobile.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
+                }, 100);
+            });
+        }
+    </script>
+</body>
+
+</html>
