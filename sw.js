@@ -1,4 +1,4 @@
-const CACHE_NAME = 'azfree-v2';
+const CACHE_NAME = 'azfree-v3';
 const urlsToCache = [
     '/',
     '/index.html',

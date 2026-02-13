@@ -683,14 +683,16 @@
                     const query = e.target.value.toLowerCase();
                     items.forEach(item => {
                         const text = item.innerText.toLowerCase();
-                        if (text.includes(query)) {
-                            item.style.display = 'flex';
-                        } else {
-                            item.style.display = 'none';
-                        }
+                        item.style.display = text.includes(query) ? 'flex' : 'none';
                     });
                 });
             }
+
+            // FORCE VISIBILITY ON LOAD: Ensure all items are visible initially
+            // This fixes the issue where items might be hidden by default or by a previous script state
+            items.forEach(item => {
+                item.style.display = 'flex';
+            });
         });
     </script>
 </body>

@@ -1,0 +1,70 @@
+<section class="py-20 bg-slate-900 relative overflow-hidden" id="hall-of-fame">
+    <div class="absolute inset-0 bg-cyber-grid bg-[length:40px_40px] opacity-10 pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                Hall of <span class="text-primary text-glow">Fame</span>
+            </h2>
+            <p class="text-slate-400 max-w-2xl mx-auto">
+                Bu layihənin inkişafına töhfə verən və onu daha yaxşı edən qəhrəmanlarımız.
+            </p>
+        </div>
+
+        <div id="contributors-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 justify-center">
+            <!-- Contributors will be loaded here dynamically -->
+            <div class="col-span-full text-center py-12">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+            </div>
+        </div>
+
+        <div class="mt-12 text-center">
+            <a href="https://github.com/KodAura-Studio/AzFree" target="_blank"
+                class="inline-flex items-center justify-center px-6 py-3 border border-slate-700 bg-slate-800 hover:bg-slate-700 text-white font-medium rounded-lg transition-all group">
+                <span class="material-icons-round mr-2 group-hover:text-primary transition-colors">code</span>
+                Layihəyə Töhfə Ver
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const contributorsContainer = document.getElementById('contributors-grid');
+        const repoOwner = 'KodAura-Studio';
+        const repoName = 'AzFree';
+
+        fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contributors`)
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.json();
+            })
+            .then(contributors => {
+                contributorsContainer.innerHTML = '';
+                contributors.forEach(user => {
+                    const card = document.createElement('a');
+                    card.href = user.html_url;
+                    card.target = '_blank';
+                    card.className = 'group flex flex-col items-center p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all';
+
+                    card.innerHTML = `
+                        <div class="relative w-20 h-20 mb-3">
+                            <img src="${user.avatar_url}" alt="${user.login}" class="w-full h-full rounded-full border-2 border-transparent group-hover:border-primary transition-colors object-cover">
+                            <div class="absolute inset-0 rounded-full bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        </div>
+                        <h3 class="font-bold text-white group-hover:text-primary transition-colors text-sm">${user.login}</h3>
+                        <p class="text-xs text-slate-400 mt-1">${user.contributions} commit</p>
+                    `;
+                    contributorsContainer.appendChild(card);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching contributors:', error);
+                contributorsContainer.innerHTML = `
+                    <div class="col-span-full text-center text-slate-500">
+                        <p>Contributors yüklənərkən xəta baş verdi.</p>
+                        <a href="https://github.com/${repoOwner}/${repoName}" class="text-primary hover:underline mt-2 inline-block">GitHub-da baxın</a>
+                    </div>
+                `;
+            });
+    });
+</script>
