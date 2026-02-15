@@ -2,15 +2,50 @@ const softwareData = [
     // Windows
     {
         id: "mas",
-        title: "Massgrave (MAS)",
+        title: "Microsoft Activation Scripts (MAS)",
         url: "https://massgrave.dev/",
         icon: "/assets/img/software/mas.png",
-        category: "windows",
+        category: "activator",
         badges: [
             { text: "Open Source", type: "opensource" },
-            { text: "Safe", type: "official" }
+            { text: "Safe", type: "official" },
+            { text: "Essential", type: "official" }
         ],
-        description: "Windows və Office üçün ən təhlükəsiz, açıq mənbəli aktivator."
+        description: "Windows və Office üçün ən təhlükəsiz, açıq mənbəli aktivator. HWID, Ohook və KMS38 dəstəyi."
+    },
+    {
+        id: "heukms",
+        title: "HEU KMS Activator",
+        url: "https://github.com/zbezj/HEU_KMS_Activator",
+        icon: "/assets/img/software/heukms.png",
+        category: "activator",
+        badges: [
+            { text: "Community", type: "community" },
+            { text: "Full Suite", type: "official" }
+        ],
+        description: "Çoxfunksiyalı aktivasiya aləti. Office və Windows-un bütün versiyaları üçün."
+    },
+    {
+        id: "idm",
+        title: "Internet Download Manager (IDM)",
+        url: "https://www.internetdownloadmanager.com/",
+        icon: "/assets/img/software/idm.png",
+        category: "windows",
+        badges: [
+            { text: "Fast", type: "official" }
+        ],
+        description: "Yükləmə sürətini 5 dəfəyə qədər artıran, dünyanın ən populyar yükləmə meneceri."
+    },
+    {
+        id: "sevenzip",
+        title: "7-Zip",
+        url: "https://www.7-zip.org/",
+        icon: "/assets/img/software/7zip.png",
+        category: "windows",
+        badges: [
+            { text: "Open Source", type: "opensource" }
+        ],
+        description: "Yüksək sıxılma dərəcəsinə malik pulsuz və açıq mənbəli fayl arxivatoru."
     },
     {
         id: "portableapps",
@@ -58,6 +93,17 @@ const softwareData = [
             { text: "Security", type: "opensource" }
         ],
         description: "Mac üçün pulsuz, açıq mənbəli təhlükəsizlik alətləri (LuLu, KnockKnock)."
+    },
+    {
+        id: "macupdater",
+        title: "MacUpdater",
+        url: "https://www.corecode.io/macupdater/",
+        icon: "/assets/img/software/macupdater.png",
+        category: "mac",
+        badges: [
+            { text: "Essential", type: "official" }
+        ],
+        description: "Mac-dakı bütün proqramları avtomatik izləyin və yeniləyin."
     },
 
     // Linux
@@ -120,6 +166,18 @@ const softwareData = [
         ],
         description: "Android tətbiqləri və kitablar üçün ən böyük forum."
     },
+    {
+        id: "revanced",
+        title: "ReVanced",
+        url: "https://revanced.app/",
+        icon: "/assets/img/software/revanced.png",
+        category: "android",
+        badges: [
+            { text: "Essential", type: "opensource" },
+            { text: "No Ads", type: "official" }
+        ],
+        description: "YouTube və digər tətbiqlər üçün reklam bloklayıcı və əlavə funksiyalar."
+    },
 
     // Privacy Tools (New Category)
     {
@@ -133,6 +191,29 @@ const softwareData = [
             { text: "Open Source", type: "opensource" }
         ],
         description: "Ən effektiv və yüngül reklam bloklayıcısı. Təhlükəsizlik üçün mütləqdir."
+    },
+    {
+        id: "vlc",
+        title: "VLC Media Player",
+        url: "https://www.videolan.org/",
+        icon: "/assets/img/software/vlc.png",
+        category: "windows",
+        badges: [
+            { text: "Open Source", type: "opensource" }
+        ],
+        description: "Hər növ media faylını oxuda bilən, dünyanın ən məşhur pulsuz media pleyeri."
+    },
+    {
+        id: "qbittorrent",
+        title: "qBittorrent",
+        url: "https://www.qbittorrent.org/",
+        icon: "/assets/img/software/qbittorrent.svg",
+        category: "windows",
+        badges: [
+            { text: "Open Source", type: "opensource" },
+            { text: "Ad-free", type: "official" }
+        ],
+        description: "uTorrent-ə ən yaxşı, açıq mənbəli və reklamsız alternativ. Təhlükəsiz torrent yükləmə."
     },
     {
         id: "privacybadger",
