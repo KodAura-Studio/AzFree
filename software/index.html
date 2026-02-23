@@ -537,9 +537,6 @@
                     const html = `
                         <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all"
                             data-category="${item.category}">
-                            <div class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary/10 transition-colors">
-                                <img src="${item.icon}" alt="${item.title}" class="w-6 h-6 opacity-80 group-hover:opacity-100" onerror="this.src='/assets/img/software/default.png'; this.onerror=null;">
-                            </div>
                             <div class="flex-grow">
                                 <div class="flex items-center gap-2 mb-1 flex-wrap">
                                     <a href="${item.url}" target="_blank" class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</a>
