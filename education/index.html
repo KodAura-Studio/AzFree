@@ -88,6 +88,9 @@
         .link-note {
             @apply text-slate-500 text-sm ml-2;
         }
+        .upvote-btn { transition: all 0.15s ease; }
+        .upvote-btn.voted .upvote-arrow { color: #1fcdef !important; }
+        .upvote-btn.voted { border-color: rgba(31,205,239,0.5) !important; background: rgba(31,205,239,0.1) !important; }
     </style>
 </head>
 
@@ -207,6 +210,20 @@
                                 class="flex items-center gap-3 px-2 py-2 bg-primary/10 text-primary rounded-lg transition-colors">
                                 <span class="material-icons-round text-lg">menu_book</span>
                                 <span class="text-sm font-bold">Təhsil</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/ai-tools" class="flex items-center gap-3 px-2 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                <span class="material-icons-round text-lg group-hover:text-primary transition-colors">auto_awesome</span>
+                                <span class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">AI Alətləri</span>
+                                <span class="ml-auto px-1.5 py-0.5 rounded text-[9px] font-bold bg-primary/20 text-primary uppercase">Yeni</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/local-services" class="flex items-center gap-3 px-2 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                <span class="material-icons-round text-lg group-hover:text-primary transition-colors">vpn_lock</span>
+                                <span class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">VPN &amp; Lokal</span>
+                                <span class="ml-auto px-1.5 py-0.5 rounded text-[9px] font-bold bg-green-500/20 text-green-400 uppercase">Yeni</span>
                             </a>
                         </li>
                         <li>
@@ -576,6 +593,7 @@
         </div>
     </div>
 
+    <script src="/assets/js/upvote.js"></script>
     <script src="/assets/js/theme.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
     <script src="/assets/js/search.js"></script>

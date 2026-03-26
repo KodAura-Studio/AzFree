@@ -72,6 +72,9 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #1fcdef;
         }
+        .upvote-btn { transition: all 0.15s ease; }
+        .upvote-btn.voted .upvote-arrow { color: #1fcdef !important; }
+        .upvote-btn.voted { border-color: rgba(31,205,239,0.5) !important; background: rgba(31,205,239,0.1) !important; }
     </style>
 </head>
 
@@ -187,10 +190,22 @@
                         <li>
                             <a href="/education"
                                 class="flex items-center gap-3 px-2 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
-                                <span
-                                    class="material-icons-round text-lg group-hover:text-primary transition-colors">menu_book</span>
-                                <span
-                                    class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Təhsil</span>
+                                <span class="material-icons-round text-lg group-hover:text-primary transition-colors">menu_book</span>
+                                <span class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Təhsil</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/ai-tools" class="flex items-center gap-3 px-2 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                <span class="material-icons-round text-lg group-hover:text-primary transition-colors">auto_awesome</span>
+                                <span class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">AI Alətləri</span>
+                                <span class="ml-auto px-1.5 py-0.5 rounded text-[9px] font-bold bg-primary/20 text-primary uppercase">Yeni</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/local-services" class="flex items-center gap-3 px-2 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                <span class="material-icons-round text-lg group-hover:text-primary transition-colors">vpn_lock</span>
+                                <span class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">VPN &amp; Lokal</span>
+                                <span class="ml-auto px-1.5 py-0.5 rounded text-[9px] font-bold bg-green-500/20 text-green-400 uppercase">Yeni</span>
                             </a>
                         </li>
                         <li>
@@ -359,6 +374,8 @@
                 <a href="/movies" class="text-slate-300 hover:text-primary transition-colors">Filmlər</a>
                 <a href="/software" class="text-slate-300 hover:text-primary transition-colors">Proqramlar</a>
                 <a href="/education" class="text-slate-300 hover:text-primary transition-colors">Təhsil</a>
+                <a href="/ai-tools" class="text-slate-300 hover:text-primary transition-colors">AI Alətləri ✨</a>
+                <a href="/local-services" class="text-slate-300 hover:text-primary transition-colors">VPN &amp; Lokal 🔒</a>
             </nav>
         </div>
     </div>
@@ -447,6 +464,20 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="/ai-tools" class="flex items-center gap-3 px-2 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                    <span class="material-icons-round text-lg group-hover:text-primary transition-colors">auto_awesome</span>
+                                    <span class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">AI Alətləri</span>
+                                    <span class="ml-auto px-1.5 py-0.5 rounded text-[9px] font-bold bg-primary/20 text-primary uppercase">Yeni</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/local-services" class="flex items-center gap-3 px-2 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                    <span class="material-icons-round text-lg group-hover:text-primary transition-colors">vpn_lock</span>
+                                    <span class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">VPN &amp; Lokal</span>
+                                    <span class="ml-auto px-1.5 py-0.5 rounded text-[9px] font-bold bg-green-500/20 text-green-400 uppercase">Yeni</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/privacy"
                                     class="flex items-center gap-3 px-2 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
                                     <span
@@ -492,6 +523,7 @@
         </div>
     </div>
 
+    <script src="/assets/js/upvote.js"></script>
     <script src="/assets/js/theme.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
     <script src="/assets/js/search.js"></script>
@@ -544,13 +576,16 @@
                                 </div>
                                 <p class="text-sm text-slate-500 dark:text-slate-400">${item.description}</p>
                             </div>
-                            <div class="hidden sm:block">
-                                <span class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
-                            </div>
+                            <button class="upvote-btn ml-4 flex-shrink-0 flex flex-col items-center gap-0.5 px-2.5 py-2 rounded-lg border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all" data-id="sw-${item.id}">
+                                <span class="material-icons-round upvote-arrow text-slate-400 text-base">arrow_upward</span>
+                                <span class="text-xs font-bold text-slate-600 dark:text-slate-300 upvote-count">${item.upvotes || 0}</span>
+                            </button>
                         </div>
                     `;
                     linksListContainer.insertAdjacentHTML('beforeend', html);
                 });
+                // Re-init upvote buttons after render
+                if (typeof initUpvoteButtons === 'function') initUpvoteButtons();
             }
 
             // Initialization with safety check

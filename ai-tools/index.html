@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="dark" lang="az">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AI Alətləri - AzFree</title>
+    <meta name="description" content="Pulsuz AI alətləri, chatbotlar, image generator və produktivlik AI-ları — AzFree tərəfindən yoxlanılmış." />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1fcdef" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: { extend: { colors: { "primary": "#1fcdef", "background-light": "#f6f8f8", "background-dark": "#020617", "surface-dark": "#0f172a" }, fontFamily: { "display": ["Inter","sans-serif"] }, boxShadow: { 'neon': '0 0 5px theme("colors.primary"), 0 0 20px theme("colors.primary")' } } }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+        body { font-family: 'Inter', sans-serif; }
+        .text-glow { text-shadow: 0 0 10px rgba(31,205,239,0.5); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1fcdef; }
+        .upvote-btn { transition: all 0.15s ease; }
+        .upvote-btn.voted .upvote-arrow { color: #1fcdef !important; }
+        .upvote-btn.voted { border-color: rgba(31,205,239,0.5) !important; background: rgba(31,205,239,0.1) !important; }
+        @keyframes shimmer { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-display selection:bg-primary selection:text-black min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 backdrop-blur-md bg-white/70 dark:bg-background-dark/80 border-b border-gray-200 dark:border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a class="flex items-center gap-2 group" href="/"><span class="material-icons-round text-primary text-3xl">terminal</span><span class="text-2xl font-bold tracking-tighter dark:text-white group-hover:text-primary transition-colors text-glow">Az<span class="text-primary">Free</span></span></a>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a class="text-sm font-medium dark:text-slate-300 hover:text-primary transition-colors" href="/">Ana Səhifə</a>
+                    <a class="text-sm font-medium dark:text-slate-300 hover:text-primary transition-colors" href="/blog">Blog</a>
+                    <a class="text-sm font-medium dark:text-slate-300 hover:text-primary transition-colors" href="/faq">FAQ</a>
+                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-white/5 transition-colors"><span id="theme-icon" class="material-icons-round dark:text-slate-300">light_mode</span></button>
+                    <button onclick="openGlobalSearch()" class="p-2 rounded-lg hover:bg-white/5 transition-colors"><span class="material-icons-round dark:text-slate-300">search</span></button>
+                </nav>
+                <div class="md:hidden flex items-center gap-2">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-lg hover:bg-white/5"><span id="theme-icon-mobile" class="material-icons-round text-slate-300">light_mode</span></button>
+                    <button id="mobile-menu-btn" class="text-slate-300"><span class="material-icons-round text-2xl">menu</span></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto pt-24 pb-12 px-4 sm:px-6 lg:px-8 w-full flex flex-col lg:flex-row gap-10">
+        <!-- Sidebar -->
+        <aside class="w-full lg:w-64 flex-shrink-0 hidden lg:block">
+            <nav class="sticky top-32 space-y-8">
+                <div>
+                    <h3 class="text-xs font-bold dark:text-white uppercase tracking-wider mb-4 px-2">Ümumi</h3>
+                    <ul class="space-y-1">
+                        <li><a href="/guide" class="flex items-center gap-3 px-2 py-2 dark:text-slate-400 hover:bg-white/5 rounded-lg transition-colors group"><span class="material-icons-round text-lg group-hover:text-primary">school</span><span class="text-sm font-medium">Başlanğıc Rəhbəri</span></a></li>
+                        <li><a href="/contribute" class="flex items-center gap-3 px-2 py-2 dark:text-slate-400 hover:bg-white/5 rounded-lg transition-colors group"><span class="material-icons-round text-lg group-hover:text-primary">volunteer_activism</span><span class="text-sm font-medium">Töhfə Ver</span></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold dark:text-white uppercase tracking-wider mb-4 px-2">Wiki</h3>
+                    <ul class="space-y-1">
+                        <li><a href="/gaming" class="flex items-center gap-3 px-2 py-2 dark:text-slate-400 hover:bg-white/5 rounded-lg transition-colors group"><span class="material-icons-round text-lg group-hover:text-primary">sports_esports</span><span class="text-sm font-medium">Oyunlar</span></a></li>
+                        <li><a href="/movies" class="flex items-center gap-3 px-2 py-2 dark:text-slate-400 hover:bg-white/5 rounded-lg transition-colors group"><span class="material-icons-round text-lg group-hover:text-primary">movie</span><span class="text-sm font-medium">Filmlər</span></a></li>
+                        <li><a href="/software/index.html" class="flex items-center gap-3 px-2 py-2 dark:text-slate-400 hover:bg-white/5 rounded-lg transition-colors group"><span class="material-icons-round text-lg group-hover:text-primary">desktop_windows</span><span class="text-sm font-medium">Proqramlar</span></a></li>
+                        <li><a href="/education" class="flex items-center gap-3 px-2 py-2 dark:text-slate-400 hover:bg-white/5 rounded-lg transition-colors group"><span class="material-icons-round text-lg group-hover:text-primary">menu_book</span><span class="text-sm font-medium">Təhsil</span></a></li>
+                        <li><a href="/ai-tools" class="flex items-center gap-3 px-2 py-2 bg-primary/10 text-primary rounded-lg"><span class="material-icons-round text-lg">auto_awesome</span><span class="text-sm font-bold">AI Alətləri</span><span class="ml-auto px-1.5 py-0.5 rounded text-[9px] font-bold bg-primary/20 uppercase">Yeni</span></a></li>
+                        <li><a href="/local-services" class="flex items-center gap-3 px-2 py-2 dark:text-slate-400 hover:bg-white/5 rounded-lg transition-colors group"><span class="material-icons-round text-lg group-hover:text-primary">vpn_lock</span><span class="text-sm font-medium">VPN &amp; Lokal</span><span class="ml-auto px-1.5 py-0.5 rounded text-[9px] font-bold bg-green-500/20 text-green-400 uppercase">Yeni</span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-grow w-full">
+            <div class="lg:hidden mb-6">
+                <button id="wiki-menu-btn" class="w-full flex items-center justify-between px-4 py-3 dark:bg-surface-dark border dark:border-white/10 rounded-xl dark:text-slate-200 font-medium hover:border-primary/50 transition-colors">
+                    <span class="flex items-center gap-2"><span class="material-icons-round text-primary">menu_open</span>Kateqoriyalar</span>
+                    <span class="material-icons-round">expand_more</span>
+                </button>
+            </div>
+
+            <div class="mb-8">
+                <div class="flex items-center gap-3 mb-2">
+                    <h1 class="text-3xl font-bold dark:text-white underline decoration-primary/50 underline-offset-8 decoration-4">AI Alətləri</h1>
+                    <span class="px-2 py-0.5 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20">Yeni Kateqoriya</span>
+                </div>
+                <p class="text-slate-500 dark:text-slate-400 mt-4">Pulsuz AI chatbotlar, image generatorlar, kod yazma alətləri və produktivlik AI-ları. Azərbaycanda rəqabətsiz resurs mərkəzi.</p>
+            </div>
+
+            <div class="bg-purple-500/10 border border-purple-500/20 rounded-lg p-4 mb-8 flex items-start gap-3">
+                <span class="material-icons-round text-purple-400 mt-0.5">auto_awesome</span>
+                <div class="text-sm text-slate-300"><span class="font-bold text-purple-400">Məsləhət:</span> Aşağıdakı alətlərin əksəriyyəti qeydiyyat olmadan da istifadə edilə bilər. "Free Tier" olan alətlər üçün sadəcə email kifayətdir.</div>
+            </div>
+
+            <!-- Search & Filter -->
+            <div class="mb-8 space-y-4">
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><span class="material-icons-round text-slate-500">search</span></span>
+                    <input type="text" id="local-search" placeholder="AI aləti axtar..." class="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-xl py-3 pl-10 pr-4 dark:text-white placeholder-slate-500 focus:ring-2 focus:ring-primary/50 shadow-sm" />
+                </div>
+                <div class="flex flex-wrap gap-2" id="filter-container">
+                    <button data-filter="all" class="filter-btn active px-4 py-1.5 rounded-full text-sm font-medium bg-primary text-black transition-all">Hamısı</button>
+                    <button data-filter="chatbot" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-slate-200 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">🤖 Chatbot</button>
+                    <button data-filter="image" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-slate-200 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">🖼️ Şəkil</button>
+                    <button data-filter="code" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-slate-200 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">💻 Kod</button>
+                    <button data-filter="productivity" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-slate-200 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">⚡ Produktivlik</button>
+                </div>
+            </div>
+
+            <!-- Featured -->
+            <div class="mb-10 p-1 rounded-2xl bg-gradient-to-r from-purple-600 via-primary to-purple-600 bg-[length:200%_auto] animate-[shimmer_3s_linear_infinite]">
+                <div class="bg-white dark:bg-surface-dark rounded-xl p-6 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10"><span class="material-icons-round text-8xl">auto_awesome</span></div>
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-yellow-500/10 text-yellow-500 text-xs font-bold uppercase mb-2"><span class="material-icons-round text-sm">star</span> Redaktor Seçimi</div>
+                        <h3 class="text-2xl font-bold dark:text-white mb-2">ChatGPT (Free Tier)</h3>
+                        <p class="dark:text-slate-400 mb-4 max-w-2xl">OpenAI-nin GPT-4o mini modelinə pulsuz çıxış. Gündəlik limitlər daxilində əksər AI tapşırıqları üçün kifayətdir.</p>
+                        <a href="https://chat.openai.com/" target="_blank" class="inline-flex items-center px-6 py-2.5 bg-primary text-black font-bold rounded-lg hover:shadow-[0_0_20px_rgba(31,205,239,0.4)] transition-all">Keçid Et <span class="material-icons-round ml-2">open_in_new</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div class="space-y-3" id="links-list">
+
+                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all" data-category="chatbot">
+                    <div class="flex-grow"><div class="flex items-center gap-2 mb-1"><a href="https://chat.openai.com/" target="_blank" class="text-lg font-bold dark:text-white group-hover:text-primary transition-colors">ChatGPT</a><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/10 text-purple-400 uppercase">Chatbot</span><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-500 uppercase">Free Tier</span></div><p class="text-sm dark:text-slate-400">Dünyanın ən məşhur AI chatbotu. GPT-4o mini modeli pulsuz istifadə edilə bilər.</p></div>
+                    <button class="upvote-btn ml-4 flex-shrink-0 flex flex-col items-center gap-0.5 px-2.5 py-2 rounded-lg border dark:border-white/10 hover:border-primary/50 transition-all" data-id="ai-chatgpt"><span class="material-icons-round upvote-arrow text-slate-400 text-base">arrow_upward</span><span class="text-xs font-bold dark:text-slate-300 upvote-count">412</span></button>
+                </div>
+
+                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all" data-category="chatbot">
+                    <div class="flex-grow"><div class="flex items-center gap-2 mb-1"><a href="https://claude.ai/" target="_blank" class="text-lg font-bold dark:text-white group-hover:text-primary transition-colors">Claude (Anthropic)</a><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/10 text-purple-400 uppercase">Chatbot</span><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-500 uppercase">Free Tier</span></div><p class="text-sm dark:text-slate-400">ChatGPT-yə ən güclü rəqib. Uzun sənədləri analiz etmək üçün idealdır. Claude 3.5 Sonnet pulsuz.</p></div>
+                    <button class="upvote-btn ml-4 flex-shrink-0 flex flex-col items-center gap-0.5 px-2.5 py-2 rounded-lg border dark:border-white/10 hover:border-primary/50 transition-all" data-id="ai-claude"><span class="material-icons-round upvote-arrow text-slate-400 text-base">arrow_upward</span><span class="text-xs font-bold dark:text-slate-300 upvote-count">287</span></button>
+                </div>
+
+                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all" data-category="chatbot">
+                    <div class="flex-grow"><div class="flex items-center gap-2 mb-1"><a href="https://gemini.google.com/" target="_blank" class="text-lg font-bold dark:text-white group-hover:text-primary transition-colors">Google Gemini</a><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/10 text-purple-400 uppercase">Chatbot</span><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-500 uppercase">Pulsuz</span></div><p class="text-sm dark:text-slate-400">Google-un AI-ı. Gmail, Drive inteqrasiyası ilə. Ən böyük kontekst pəncərəsi.</p></div>
+                    <button class="upvote-btn ml-4 flex-shrink-0 flex flex-col items-center gap-0.5 px-2.5 py-2 rounded-lg border dark:border-white/10 hover:border-primary/50 transition-all" data-id="ai-gemini"><span class="material-icons-round upvote-arrow text-slate-400 text-base">arrow_upward</span><span class="text-xs font-bold dark:text-slate-300 upvote-count">253</span></button>
+                </div>
+
+                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all" data-category="chatbot">
+                    <div class="flex-grow"><div class="flex items-center gap-2 mb-1"><a href="https://www.perplexity.ai/" target="_blank" class="text-lg font-bold dark:text-white group-hover:text-primary transition-colors">Perplexity AI</a><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/10 text-purple-400 uppercase">Chatbot</span><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-400 uppercase">Real-time</span></div><p class="text-sm dark:text-slate-400">İnternet bağlantılı AI axtarış mühərriki. Mənbələri göstərir, cari məlumatlarla cavab verir.</p></div>
+                    <button class="upvote-btn ml-4 flex-shrink-0 flex flex-col items-center gap-0.5 px-2.5 py-2 rounded-lg border dark:border-white/10 hover:border-primary/50 transition-all" data-id="ai-perplexity"><span class="material-icons-round upvote-arrow text-slate-400 text-base">arrow_upward</span><span class="text-xs font-bold dark:text-slate-300 upvote-count">198</span></button>
+                </div>
+
+                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all" data-category="image">
+                    <div class="flex-grow"><div class="flex items-center gap-2 mb-1"><a href="https://ideogram.ai/" target="_blank" class="text-lg font-bold dark:text-white group-hover:text-primary transition-colors">Ideogram AI</a><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-pink-500/10 text-pink-400 uppercase">Şəkil</span><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-500 uppercase">Gündəlik Pulsuz</span></div><p class="text-sm dark:text-slate-400">Mətn ilə şəkil yaradın. Gündəlik pulsuz generasiya hüququ var. Mətn daxil etmə dəstəyi.</p></div>
+                    <button class="upvote-btn ml-4 flex-shrink-0 flex flex-col items-center gap-0.5 px-2.5 py-2 rounded-lg border dark:border-white/10 hover:border-primary/50 transition-all" data-id="ai-ideogram"><span class="material-icons-round upvote-arrow text-slate-400 text-base">arrow_upward</span><span class="text-xs font-bold dark:text-slate-300 upvote-count">167</span></button>
+                </div>
+
+                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all" data-category="image">
+                    <div class="flex-grow"><div class="flex items-center gap-2 mb-1"><a href="https://www.bing.com/images/create" target="_blank" class="text-lg font-bold dark:text-white group-hover:text-primary transition-colors">Bing Image Creator</a><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-pink-500/10 text-pink-400 uppercase">Şəkil</span><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-500 uppercase">DALL-E 3</span></div><p class="text-sm dark:text-slate-400">Microsoft-un DALL-E 3 əsaslı şəkil generatoru. Microsoft hesabı ilə tamamilə pulsuz.</p></div>
+                    <button class="upvote-btn ml-4 flex-shrink-0 flex flex-col items-center gap-0.5 px-2.5 py-2 rounded-lg border dark:border-white/10 hover:border-primary/50 transition-all" data-id="ai-bing-img"><span class="material-icons-round upvote-arrow text-slate-400 text-base">arrow_upward</span><span class="text-xs font-bold dark:text-slate-300 upvote-count">143</span></button>
+                </div>
+
+                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all" data-category="code">
+                    <div class="flex-grow"><div class="flex items-center gap-2 mb-1"><a href="https://github.com/features/copilot" target="_blank" class="text-lg font-bold dark:text-white group-hover:text-primary transition-colors">GitHub Copilot Free</a><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-400 uppercase">Kod</span><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-500 uppercase">Pulsuz Plan</span></div><p class="text-sm dark:text-slate-400">VS Code daxilində AI kod tamamlama. Pulsuz plan: ayda 2000 kod tamamlama + 50 chat mesajı.</p></div>
+                    <button class="upvote-btn ml-4 flex-shrink-0 flex flex-col items-center gap-0.5 px-2.5 py-2 rounded-lg border dark:border-white/10 hover:border-primary/50 transition-all" data-id="ai-copilot"><span class="material-icons-round upvote-arrow text-slate-400 text-base">arrow_upward</span><span class="text-xs font-bold dark:text-slate-300 upvote-count">321</span></button>
+                </div>
+
+                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all" data-category="code">
+                    <div class="flex-grow"><div class="flex items-center gap-2 mb-1"><a href="https://codeium.com/" target="_blank" class="text-lg font-bold dark:text-white group-hover:text-primary transition-colors">Codeium (Windsurf)</a><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-400 uppercase">Kod</span><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-500 uppercase">Tamamilə Pulsuz</span></div><p class="text-sm dark:text-slate-400">GitHub Copilot-a güclü pulsuz alternativ. Limitsiz kod tamamlama, bütün dillər dəstəyi.</p></div>
+                    <button class="upvote-btn ml-4 flex-shrink-0 flex flex-col items-center gap-0.5 px-2.5 py-2 rounded-lg border dark:border-white/10 hover:border-primary/50 transition-all" data-id="ai-codeium"><span class="material-icons-round upvote-arrow text-slate-400 text-base">arrow_upward</span><span class="text-xs font-bold dark:text-slate-300 upvote-count">189</span></button>
+                </div>
+
+                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all" data-category="productivity">
+                    <div class="flex-grow"><div class="flex items-center gap-2 mb-1"><a href="https://gamma.app/" target="_blank" class="text-lg font-bold dark:text-white group-hover:text-primary transition-colors">Gamma.app</a><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-yellow-500/10 text-yellow-400 uppercase">Produktivlik</span><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-400 uppercase">Prezentasiya</span></div><p class="text-sm dark:text-slate-400">AI ilə saniyələr içində prezentasiya, veb səhifə və sənəd yarat. PowerPoint-ə müasir alternativ.</p></div>
+                    <button class="upvote-btn ml-4 flex-shrink-0 flex flex-col items-center gap-0.5 px-2.5 py-2 rounded-lg border dark:border-white/10 hover:border-primary/50 transition-all" data-id="ai-gamma"><span class="material-icons-round upvote-arrow text-slate-400 text-base">arrow_upward</span><span class="text-xs font-bold dark:text-slate-300 upvote-count">97</span></button>
+                </div>
+
+            </div>
+
+            <!-- Contribute -->
+            <div class="mt-10 p-6 bg-white/5 rounded-xl border border-white/10">
+                <h3 class="font-bold text-white mb-2 flex items-center gap-2"><span class="material-icons-round text-primary">add_circle</span>Yeni AI Aləti Təklif Et</h3>
+                <p class="text-slate-400 text-sm mb-4">Bildiyin pulsuz AI aləti varsa, GitHub vasitəsilə əlavə etməyimizi tələb et.</p>
+                <a href="https://github.com/KodAura-Studio/AzFree/issues/new?title=AI+Aleti+Teleb&labels=resource-request" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-black font-bold rounded-lg hover:opacity-90 text-sm">
+                    <span class="material-icons-round text-sm">open_in_new</span>GitHub Issue Aç
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-surface-dark border-t dark:border-white/10 mt-auto w-full">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2"><span class="material-icons-round text-primary text-2xl">terminal</span><span class="text-xl font-bold dark:text-white">Az<span class="text-primary">Free</span></span></div>
+                <div class="text-slate-500 dark:text-slate-400 text-sm text-center">
+                    <div class="flex gap-x-4 mb-2"><a href="/disclaimer/index.html" class="hover:text-primary">Hüquqi Bildiriş</a><a href="/privacy/index.html" class="hover:text-primary">Məxfilik Siyasəti</a></div>
+                    <p>&copy; 2026 AzFree. Bütün hüquqlar qorunur.</p>
+                    <p class="mt-1">Designed by <span class="text-primary font-medium">KodAura</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-slate-900/95 backdrop-blur-sm hidden">
+        <div class="flex flex-col h-full p-4">
+            <div class="flex justify-end"><button id="mobile-menu-close" class="text-slate-400 hover:text-white p-2"><span class="material-icons-round text-3xl">close</span></button></div>
+            <nav class="flex flex-col space-y-4 mt-8 text-center text-xl">
+                <a href="/" class="text-slate-300 hover:text-primary">Ana Səhifə</a>
+                <a href="/gaming" class="text-slate-300 hover:text-primary">Oyunlar</a>
+                <a href="/movies" class="text-slate-300 hover:text-primary">Filmlər</a>
+                <a href="/software" class="text-slate-300 hover:text-primary">Proqramlar</a>
+                <a href="/education" class="text-slate-300 hover:text-primary">Təhsil</a>
+                <a href="/ai-tools" class="text-primary font-bold">AI Alətləri ✨</a>
+                <a href="/local-services" class="text-slate-300 hover:text-primary">VPN &amp; Lokal</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Global Search -->
+    <div id="global-search-overlay" class="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm hidden">
+        <div class="flex items-start justify-center pt-20 px-4">
+            <div class="bg-white dark:bg-surface-dark rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden">
+                <div class="p-4 border-b dark:border-white/10"><div class="relative"><span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><span class="material-icons-round text-slate-400">search</span></span><input id="global-search-input" type="text" placeholder="Axtarış... (Ctrl+K)" class="w-full pl-10 pr-4 py-3 dark:bg-white/5 border-0 rounded-lg dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-primary" /></div></div>
+                <div id="global-search-results" class="max-h-96 overflow-y-auto"><p class="text-slate-400 text-sm p-4">Axtarış üçün yazmağa başlayın...</p></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+    <script src="/assets/js/search.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/upvote.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        if (themeToggleMobile) { themeToggleMobile.addEventListener('click', () => { document.getElementById('theme-toggle').click(); setTimeout(() => { themeIconMobile.textContent = (localStorage.getItem('azfree-theme')||'dark') === 'dark' ? 'light_mode' : 'dark_mode'; }, 100); }); }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const items = document.querySelectorAll('.link-item');
+            const searchInput = document.getElementById('local-search');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const f = btn.getAttribute('data-filter');
+                    filterBtns.forEach(b => { b.classList.remove('bg-primary','text-black'); b.classList.add('bg-slate-200','dark:bg-slate-800','dark:text-slate-300'); });
+                    btn.classList.remove('bg-slate-200','dark:bg-slate-800','dark:text-slate-300'); btn.classList.add('bg-primary','text-black');
+                    items.forEach(item => { item.style.display = (f==='all'||item.getAttribute('data-category')===f) ? 'flex' : 'none'; });
+                });
+            });
+            if (searchInput) { searchInput.addEventListener('input', (e) => { const q = e.target.value.toLowerCase(); items.forEach(item => { item.style.display = item.innerText.toLowerCase().includes(q) ? 'flex' : 'none'; }); }); }
+            items.forEach(item => { item.style.display = 'flex'; });
+        });
+    </script>
+</body>
+</html>

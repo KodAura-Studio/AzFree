@@ -259,6 +259,31 @@
                 </div>
             </div>
         </section>
+
+        <!-- Stats Banner -->
+        <section class="py-10 bg-slate-50 dark:bg-surface-dark/50 border-b border-gray-200 dark:border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="p-4">
+                        <div class="text-3xl font-extrabold text-primary" style="text-shadow:0 0 10px rgba(31,205,239,0.5)">250+</div>
+                        <div class="text-sm text-slate-500 dark:text-slate-400 mt-1">Yoxlanılmış Resurs</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-3xl font-extrabold text-primary" style="text-shadow:0 0 10px rgba(31,205,239,0.5)">6</div>
+                        <div class="text-sm text-slate-500 dark:text-slate-400 mt-1">Kateqoriya</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-3xl font-extrabold text-primary" style="text-shadow:0 0 10px rgba(31,205,239,0.5)">0</div>
+                        <div class="text-sm text-slate-500 dark:text-slate-400 mt-1">Virus / Malware</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-3xl font-extrabold text-primary" style="text-shadow:0 0 10px rgba(31,205,239,0.5)">24/7</div>
+                        <div class="text-sm text-slate-500 dark:text-slate-400 mt-1">Komanda Dəstəyi</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Categories Section -->
         <section class="py-20 bg-background-light dark:bg-background-dark relative" id="categories">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -266,7 +291,7 @@
                     <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">Populyar Kateqoriyalar</h2>
                     <div class="h-1 w-20 bg-primary mx-auto rounded-full shadow-[0_0_10px_rgba(31,205,239,0.8)]"></div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Card 1: Games -->
                     <a class="group relative bg-white dark:bg-surface-dark rounded-xl p-6 border border-gray-200 dark:border-white/5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-neon-sm overflow-hidden"
                         href="/gaming/index.html">
@@ -333,6 +358,32 @@
                             <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Təhsil</h3>
                             <p class="text-sm text-slate-500 dark:text-slate-400">Kitablar, dərsliklər və təhsil
                                 resursları bazası.</p>
+                        </div>
+                    </a>
+                    <!-- Card 5: AI Tools -->
+                    <a class="group relative bg-white dark:bg-surface-dark rounded-xl p-6 border border-gray-200 dark:border-white/5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_15px_rgba(31,205,239,0.3)] overflow-hidden"
+                        href="/ai-tools/index.html">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute -top-2 -right-2 px-2 py-0.5 bg-primary text-black text-[10px] font-extrabold uppercase rounded-bl-lg rounded-tr-xl tracking-wider">Yeni</div>
+                        <div class="relative z-10 flex flex-col items-center text-center">
+                            <div class="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-purple-500/20 transition-colors">
+                                <span class="material-icons-round text-3xl text-slate-700 dark:text-white group-hover:text-purple-400">auto_awesome</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">AI Alətləri</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">Pulsuz chatbotlar, image generatorlar, kod yazma alətləri.</p>
+                        </div>
+                    </a>
+                    <!-- Card 6: VPN & Local -->
+                    <a class="group relative bg-white dark:bg-surface-dark rounded-xl p-6 border border-gray-200 dark:border-white/5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_15px_rgba(31,205,239,0.3)] overflow-hidden"
+                        href="/local-services/index.html">
+                        <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute -top-2 -right-2 px-2 py-0.5 bg-green-500 text-black text-[10px] font-extrabold uppercase rounded-bl-lg rounded-tr-xl tracking-wider">Yeni</div>
+                        <div class="relative z-10 flex flex-col items-center text-center">
+                            <div class="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-green-500/20 transition-colors">
+                                <span class="material-icons-round text-3xl text-slate-700 dark:text-white group-hover:text-green-400">vpn_lock</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">VPN &amp; Lokal</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">Pulsuz VPN-lər, hosting platformaları və gizlilik alətləri.</p>
                         </div>
                     </a>
                 </div>
@@ -637,6 +688,8 @@
                 <a href="/movies" class="text-slate-300 hover:text-primary transition-colors">Filmlər</a>
                 <a href="/software" class="text-slate-300 hover:text-primary transition-colors">Proqramlar</a>
                 <a href="/education" class="text-slate-300 hover:text-primary transition-colors">Təhsil</a>
+                <a href="/ai-tools" class="text-slate-300 hover:text-primary transition-colors">AI Alətləri ✨</a>
+                <a href="/local-services" class="text-slate-300 hover:text-primary transition-colors">VPN &amp; Lokal 🔒</a>
                 <a href="/blog" class="text-slate-300 hover:text-primary transition-colors">Blog</a>
                 <a href="/faq" class="text-slate-300 hover:text-primary transition-colors">FAQ</a>
             </nav>
@@ -663,6 +716,7 @@
         </div>
     </div>
 
+    <script src="/assets/js/upvote.js"></script>
     <script src="/assets/js/theme.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
     <script src="/assets/js/search.js"></script>

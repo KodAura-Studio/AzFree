@@ -88,6 +88,9 @@
         .link-note {
             @apply text-slate-500 text-sm ml-2;
         }
+        .upvote-btn { transition: all 0.15s ease; }
+        .upvote-btn.voted .upvote-arrow { color: #1fcdef !important; }
+        .upvote-btn.voted { border-color: rgba(31,205,239,0.5) !important; background: rgba(31,205,239,0.1) !important; }
     </style>
 </head>
 
@@ -207,6 +210,22 @@
                                     class="material-icons-round text-lg group-hover:text-primary transition-colors">menu_book</span>
                                 <span
                                     class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Təhsil</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/ai-tools"
+                                class="flex items-center gap-3 px-2 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                <span class="material-icons-round text-lg group-hover:text-primary transition-colors">auto_awesome</span>
+                                <span class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">AI Alətləri</span>
+                                <span class="ml-auto px-1.5 py-0.5 rounded text-[9px] font-bold bg-primary/20 text-primary uppercase">Yeni</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/local-services"
+                                class="flex items-center gap-3 px-2 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors group">
+                                <span class="material-icons-round text-lg group-hover:text-primary transition-colors">vpn_lock</span>
+                                <span class="text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">VPN &amp; Lokal</span>
+                                <span class="ml-auto px-1.5 py-0.5 rounded text-[9px] font-bold bg-green-500/20 text-green-400 uppercase">Yeni</span>
                             </a>
                         </li>
                         <li>
@@ -344,14 +363,12 @@
                             <span
                                 class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-500 uppercase">Repack</span>
                         </div>
-                        <p class="text-sm text-slate-500 dark:text-slate-400">Çox sıxılmış oyun repakları. İnterneti
-                            zəif
-                            olanlar üçün idealdır.</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Çox sıxılmış oyun repakları. İnterneti zəif olanlar üçün idealdır.</p>
                     </div>
-                    <div class="hidden sm:block">
-                        <span
-                            class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
-                    </div>
+                    <button class="upvote-btn ml-4 flex-shrink-0 flex flex-col items-center gap-0.5 px-2.5 py-2 rounded-lg border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all" data-id="gaming-fitgirl">
+                        <span class="material-icons-round upvote-arrow text-slate-400 text-base">arrow_upward</span>
+                        <span class="text-xs font-bold text-slate-600 dark:text-slate-300 upvote-count">428</span>
+                    </button>
                 </div>
 
                 <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all"
@@ -369,10 +386,10 @@
                             Quraşdırma
                             vaxtı daha tezdir.</p>
                     </div>
-                    <div class="hidden sm:block">
-                        <span
-                            class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
-                    </div>
+                    <button class="upvote-btn ml-4 flex-shrink-0 flex flex-col items-center gap-0.5 px-2.5 py-2 rounded-lg border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all" data-id="gaming-dodi">
+                        <span class="material-icons-round upvote-arrow text-slate-400 text-base">arrow_upward</span>
+                        <span class="text-xs font-bold text-slate-600 dark:text-slate-300 upvote-count">312</span>
+                    </button>
                 </div>
 
                 <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all"
@@ -391,10 +408,10 @@
                         <p class="text-sm text-slate-500 dark:text-slate-400">DRM-siz oyunlar. Quraşdır və oyna, heç bir
                             crack lazım deyil.</p>
                     </div>
-                    <div class="hidden sm:block">
-                        <span
-                            class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
-                    </div>
+                    <button class="upvote-btn ml-4 flex-shrink-0 flex flex-col items-center gap-0.5 px-2.5 py-2 rounded-lg border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all" data-id="gaming-gog">
+                        <span class="material-icons-round upvote-arrow text-slate-400 text-base">arrow_upward</span>
+                        <span class="text-xs font-bold text-slate-600 dark:text-slate-300 upvote-count">256</span>
+                    </button>
                 </div>
 
                 <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all"
@@ -410,16 +427,13 @@
                         <p class="text-sm text-slate-500 dark:text-slate-400">Pre-installed oyunlar. Quraşdırma tələb
                             etmir, sadəcə yüklə və oyna. Təhlükəsizdir.</p>
                     </div>
-                    <div class="hidden sm:block">
-                        <span
-                            class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
-                    </div>
+                    <button class="upvote-btn ml-4 flex-shrink-0 flex flex-col items-center gap-0.5 px-2.5 py-2 rounded-lg border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all" data-id="gaming-steamrip">
+                        <span class="material-icons-round upvote-arrow text-slate-400 text-base">arrow_upward</span>
+                        <span class="text-xs font-bold text-slate-600 dark:text-slate-300 upvote-count">198</span>
+                    </button>
                 </div>
 
-                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all"
-                    data-category="multiplayer">
-                    
-                    <div class="flex-grow">
+                <div class="link-item group flex items-center p-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl hover:border-primary/50 hover:shadow-lg hove                    <div class="flex-grow">
                         <div class="flex items-center gap-2 mb-1">
                             <a href="https://online-fix.me/" target="_blank"
                                 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Online-Fix.me</a>
@@ -427,11 +441,12 @@
                                 class="px-2 py-0.5 rounded text-[10px] font-bold bg-yellow-500/10 text-yellow-500 uppercase">Multiplayer</span>
                         </div>
                         <p class="text-sm text-slate-500 dark:text-slate-400">Dostlarınızla online oynamaq üçün fix
-                            faylları. (Rus dilindədir)</p>
+                            fayll arı. (Rus dilindədir)</p>
                     </div>
-                    <div class="hidden sm:block">
-                        <span
-                            class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
+                    <button class="upvote-btn ml-4 flex-shrink-0 flex flex-col items-center gap-0.5 px-2.5 py-2 rounded-lg border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all" data-id="gaming-onlinefix">
+                        <span class="material-icons-round upvote-arrow text-slate-400 text-base">arrow_upward</span>
+                        <span class="text-xs font-bold text-slate-600 dark:text-slate-300 upvote-count">167</span>
+                    </button>ext-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
                     </div>
                 </div>
 
@@ -447,10 +462,10 @@
                         </div>
                         <p class="text-sm text-slate-500 dark:text-slate-400">PlayStation 3 Emulyatoru.</p>
                     </div>
-                    <div class="hidden sm:block">
-                        <span
-                            class="material-icons-round text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors transform group-hover:translate-x-1">chevron_right</span>
-                    </div>
+                    <button class="upvote-btn ml-4 flex-shrink-0 flex flex-col items-center gap-0.5 px-2.5 py-2 rounded-lg border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all" data-id="gaming-rpcs3">
+                        <span class="material-icons-round upvote-arrow text-slate-400 text-base">arrow_upward</span>
+                        <span class="text-xs font-bold text-slate-600 dark:text-slate-300 upvote-count">89</span>
+                    </button>
                 </div>
 
 
@@ -631,6 +646,7 @@
         </div>
     </div>
 
+    <script src="/assets/js/upvote.js"></script>
     <script src="/assets/js/theme.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
     <script src="/assets/js/search.js"></script>
